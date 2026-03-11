@@ -15,7 +15,7 @@ const RSS_FEEDS = {
   "Harper's Bazaar": 'https://www.harpersbazaar.com/rss/all.xml',
   'WWD':             'https://wwd.com/feed/',
   'Who What Wear':   'https://www.whowhatwear.com/rss',
-  'The Cut':         'https://www.thecut.com/rss/index.xml',
+  'Dazed':           'https://www.dazeddigital.com/rss',
   'Refinery29':      'https://www.refinery29.com/rss.xml',
 };
 
@@ -108,15 +108,8 @@ async function scrape() {
         const desc  = stripHtml(item.content || item.contentSnippet || item.summary || '').slice(0, 280);
         const image = getImage(item);
 
-        // Quick brand check (no extra HTTP request)
-        let brands = findBrands(title + ' ' + desc);
-
-        // If no brand found yet, fetch article body
-        if (!brands.length) {
-          const body = await fetchBody(link);
-          brands = findBrands(body);
-          await sleep(300);
-        }
+        // Brand check on title + RSS description only (fast, no extra requests)
+        const brands = findBrands(title + ' ' + desc);
 
         articles.push({ source, title, desc, link, image, brands });
         count++;
