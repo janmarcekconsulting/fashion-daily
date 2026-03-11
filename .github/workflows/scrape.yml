@@ -31,8 +31,8 @@ jobs:
         env:
           SITE_PASSWORD: ${{ secrets.SITE_PASSWORD }}
         run: |
-          npx staticrypt@3 days/*.html --directory days --password "$SITE_PASSWORD" --remember 7 --short
-          npx staticrypt@3 index.html --directory . --password "$SITE_PASSWORD" --remember 7 --short
+          ./node_modules/.bin/staticrypt days/*.html --directory days --password "$SITE_PASSWORD" --remember 7 --short
+          ./node_modules/.bin/staticrypt index.html --directory . --password "$SITE_PASSWORD" --remember 7 --short
 
       - name: Commit and push results
         run: |

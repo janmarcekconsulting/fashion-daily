@@ -85,6 +85,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 async function scrape() {
   const parser = new Parser({
+    timeout: 8000,
     customFields: {
       item: [
         ['media:content', 'media:content'],
