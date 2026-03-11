@@ -2,7 +2,7 @@ name: Fashion Daily Scraper
 
 on:
   schedule:
-    - cron: '0 6 * * *'   # every day at 07:00 CET (06:00 UTC)
+    - cron: '0 9 * * *'   # every day at 10:00 CET (09:00 UTC)
   workflow_dispatch:        # allows manual trigger from GitHub UI
 
 permissions:
