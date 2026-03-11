@@ -25,14 +25,9 @@ jobs:
         run: npm install
 
       - name: Run scraper
-        run: node scraper.js
-
-      - name: Password-protect pages
         env:
           SITE_PASSWORD: ${{ secrets.SITE_PASSWORD }}
-        run: |
-          ./node_modules/.bin/staticrypt days/*.html --directory days --password "$SITE_PASSWORD" --remember 7 --short
-          ./node_modules/.bin/staticrypt index.html --directory . --password "$SITE_PASSWORD" --remember 7 --short
+        run: node scraper.js
 
       - name: Commit and push results
         run: |

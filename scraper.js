@@ -3,6 +3,7 @@ import * as cheerio from 'cheerio';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { createHash } from 'crypto';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -222,7 +223,7 @@ function cardHtml(a) {
 </a>`;
 }
 
-function generateHtml(articles, dateStr, allDays, prompt) {
+function generateHtml(articles, dateStr, allDays, prompt, passwordHash) {
   const cards = articles.map(cardHtml).join('\n');
   const brandCount = articles.filter(a => a.brands.length).length;
 
@@ -231,6 +232,65 @@ function generateHtml(articles, dateStr, allDays, prompt) {
   ).join('\n');
 
   const promptSafe = prompt.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+  const authScript = passwordHash ? `
+<style>
+#auth-overlay {
+  position:fixed; inset:0; background:#080808; z-index:9999;
+  display:flex; align-items:center; justify-content:center;
+}
+.auth-box {
+  background:#111; border:1px solid #2a2a2a; border-radius:14px;
+  padding:40px 48px; text-align:center; width:320px;
+}
+.auth-box h1 { font-size:1.2rem; letter-spacing:.2em; text-transform:uppercase; color:#c9a84c; margin-bottom:8px; }
+.auth-box p  { color:#555; font-size:.8rem; margin-bottom:28px; }
+.auth-box input {
+  width:100%; padding:12px 16px; background:#1a1a1a; border:1px solid #2a2a2a;
+  border-radius:8px; color:#f0f0f0; font-size:1rem; outline:none;
+  margin-bottom:14px; text-align:center; letter-spacing:.1em;
+}
+.auth-box input:focus { border-color:#c9a84c; }
+.auth-box button {
+  width:100%; padding:12px; background:#c9a84c; color:#000;
+  border:none; border-radius:8px; font-weight:800; font-size:.9rem;
+  cursor:pointer; letter-spacing:.08em;
+}
+.auth-error { color:#e05; font-size:.8rem; margin-top:10px; min-height:18px; }
+</style>
+<div id="auth-overlay">
+  <div class="auth-box">
+    <h1>Fashion Daily</h1>
+    <p>Enter password to continue</p>
+    <input type="password" id="pw-input" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkPw()">
+    <button onclick="checkPw()">Enter</button>
+    <div class="auth-error" id="pw-error"></div>
+  </div>
+</div>
+<script>
+(function() {
+  const HASH = '${passwordHash}';
+  const KEY  = 'fd_auth';
+  if (localStorage.getItem(KEY) === HASH) {
+    document.getElementById('auth-overlay').remove();
+  }
+  async function sha256(str) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+  }
+  window.checkPw = async function() {
+    const val = document.getElementById('pw-input').value;
+    const h   = await sha256(val);
+    if (h === HASH) {
+      localStorage.setItem(KEY, HASH);
+      document.getElementById('auth-overlay').remove();
+    } else {
+      document.getElementById('pw-error').textContent = 'Wrong password';
+      document.getElementById('pw-input').value = '';
+    }
+  };
+})();
+</script>` : '';
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -241,6 +301,7 @@ function generateHtml(articles, dateStr, allDays, prompt) {
   <style>${CSS}</style>
 </head>
 <body>
+${authScript}
 
 <header>
   <div class="logo">Fashion Daily</div>
@@ -302,8 +363,13 @@ async function main() {
   allDays = [...new Set(allDays)].sort((a, b) => b.localeCompare(a));
   fs.writeFileSync(indexPath, JSON.stringify(allDays, null, 2));
 
+  const sitePassword = process.env.SITE_PASSWORD || '';
+  const passwordHash = sitePassword
+    ? createHash('sha256').update(sitePassword).digest('hex')
+    : '';
+
   const prompt = buildTikTokPrompt(articles, today);
-  const html   = generateHtml(articles, today, allDays, prompt);
+  const html   = generateHtml(articles, today, allDays, prompt, passwordHash);
 
   fs.writeFileSync(path.join(daysDir, `${today}.html`), html, 'utf8');
   console.log(`✓  days/${today}.html  (${articles.length} articles)`);
