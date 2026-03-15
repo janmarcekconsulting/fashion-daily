@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fashion Daily — 2026-03-15</title>
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #080808; --surface: #111; --surface2: #1a1a1a;
+  --accent: #c9a84c; --text: #f0f0f0; --muted: #777; --radius: 12px;
+}
+body { background: var(--bg); color: var(--text); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; min-height: 100vh; }
+header { padding: 24px 32px 20px; border-bottom: 1px solid #1c1c1c; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.logo { font-size: 1.5rem; font-weight: 900; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); }
+.date-badge { font-size: .8rem; color: var(--muted); letter-spacing: .08em; }
+.day-nav { padding: 14px 32px; display: flex; gap: 8px; overflow-x: auto; border-bottom: 1px solid #1c1c1c; scrollbar-width: none; }
+.day-nav::-webkit-scrollbar { display: none; }
+.day-link { white-space: nowrap; padding: 5px 14px; border-radius: 20px; border: 1px solid #2a2a2a; color: var(--muted); text-decoration: none; font-size: .75rem; transition: all .18s; }
+.day-link:hover, .day-link.active { background: var(--accent); color: #000; border-color: var(--accent); font-weight: 700; }
+.tiktok-box { margin: 28px 32px 12px; background: var(--surface); border: 1px solid #222; border-left: 3px solid var(--accent); border-radius: var(--radius); padding: 20px 24px; }
+.tiktok-box h2 { font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+.prompt-text { font-size: .82rem; color: #bbb; line-height: 1.65; white-space: pre-wrap; font-family: 'Courier New', monospace; background: var(--surface2); padding: 14px 16px; border-radius: 8px; margin-bottom: 14px; max-height: 200px; overflow-y: auto; }
+.copy-btn { background: var(--accent); color: #000; border: none; padding: 10px 22px; border-radius: 6px; font-weight: 800; font-size: .8rem; cursor: pointer; letter-spacing: .06em; transition: opacity .2s; }
+.copy-btn:hover { opacity: .82; }
+.stats { padding: 10px 32px 20px; color: var(--muted); font-size: .75rem; letter-spacing: .05em; }
+.stats strong { color: var(--accent); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 18px; padding: 0 32px 64px; }
+.card { background: var(--surface); border-radius: var(--radius); overflow: hidden; text-decoration: none; color: var(--text); border: 1px solid #1a1a1a; transition: transform .2s, border-color .2s; display: flex; flex-direction: column; }
+.card:hover { transform: translateY(-4px); border-color: #2e2e2e; }
+.card-img { width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #141414; }
+.card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s; }
+.card:hover .card-img img { transform: scale(1.05); }
+.no-img { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg,#1a1a1a,#111); display: flex; align-items: center; justify-content: center; color: #2a2a2a; font-size: 2rem; }
+.card-body { padding: 15px 16px 18px; display: flex; flex-direction: column; gap: 7px; flex: 1; }
+.source { font-size: .65rem; text-transform: uppercase; letter-spacing: .14em; color: var(--accent); font-weight: 700; }
+.brand-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.brand-tag { font-size: .62rem; padding: 2px 9px; background: #1e1c10; border: 1px solid #3a3010; border-radius: 20px; color: var(--accent); }
+.card-body h3 { font-size: .9rem; font-weight: 600; line-height: 1.4; }
+.card-body p { font-size: .78rem; color: var(--muted); line-height: 1.55; flex: 1; }
+</style>
+</head>
+<body>
+
+<style>
+#auth-overlay {
+  position:fixed; inset:0; background:#080808; z-index:9999;
+  display:flex; align-items:center; justify-content:center;
+}
+.auth-box {
+  background:#111; border:1px solid #2a2a2a; border-radius:14px;
+  padding:40px 48px; text-align:center; width:320px;
+}
+.auth-box h1 { font-size:1.2rem; letter-spacing:.2em; text-transform:uppercase; color:#c9a84c; margin-bottom:8px; }
+.auth-box p  { color:#555; font-size:.8rem; margin-bottom:28px; }
+.auth-box input {
+  width:100%; padding:12px 16px; background:#1a1a1a; border:1px solid #2a2a2a;
+  border-radius:8px; color:#f0f0f0; font-size:1rem; outline:none;
+  margin-bottom:14px; text-align:center; letter-spacing:.1em;
+}
+.auth-box input:focus { border-color:#c9a84c; }
+.auth-box button {
+  width:100%; padding:12px; background:#c9a84c; color:#000;
+  border:none; border-radius:8px; font-weight:800; font-size:.9rem;
+  cursor:pointer; letter-spacing:.08em;
+}
+.auth-error { color:#e05; font-size:.8rem; margin-top:10px; min-height:18px; }
+</style>
+<div id="auth-overlay">
+  <div class="auth-box">
+    <h1>Fashion Daily</h1>
+    <p>Enter password to continue</p>
+    <input type="password" id="pw-input" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkPw()">
+    <button onclick="checkPw()">Enter</button>
+    <div class="auth-error" id="pw-error"></div>
+  </div>
+</div>
+<script>
+(function() {
+  const HASH = 'ba1e1509304f22d0ce8243a8525d508eb06b1c400c80ef09e9c11ff5a1ad34f4';
+  const KEY  = 'fd_auth';
+  if (localStorage.getItem(KEY) === HASH) {
+    document.getElementById('auth-overlay').remove();
+  }
+  async function sha256(str) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+  }
+  window.checkPw = async function() {
+    const val = document.getElementById('pw-input').value;
+    const h   = await sha256(val);
+    if (h === HASH) {
+      localStorage.setItem(KEY, HASH);
+      document.getElementById('auth-overlay').remove();
+    } else {
+      document.getElementById('pw-error').textContent = 'Wrong password';
+      document.getElementById('pw-input').value = '';
+    }
+  };
+})();
+</script>
+
+<header>
+  <div class="logo">Fashion Daily</div>
+  <div class="date-badge">2026-03-15</div>
+</header>
+
+<nav class="day-nav">
+<a class="day-link active" href="2026-03-15.html">2026-03-15</a>
+<a class="day-link " href="2026-03-14.html">2026-03-14</a>
+<a class="day-link " href="2026-03-13.html">2026-03-13</a>
+<a class="day-link " href="2026-03-12.html">2026-03-12</a>
+<a class="day-link " href="2026-03-11.html">2026-03-11</a>
+</nav>
+
+<div class="tiktok-box">
+  <h2>🎬 TikTok Script Prompt — paste into ChatGPT</h2>
+  <div class="prompt-text" id="prompt">You are a TikTok fashion creator writing a short video script.
+
+Today's date: 2026-03-15
+Today's top mentioned brands: Chanel, Rick Owens, Vivienne Westwood, Prada
+Today's biggest fashion headlines:
+- Hollywood’s Finest Warmed Up for the Oscars at the Annual Chanel and Charles Finch Dinner
+- Beauty Marks: The Best Beauty Looks of the Week
+- In New York, Customers Are Going Coco for Matthieu Blazy’s Chanel
+- Paris Fashion Week Street Style Was All About Spring’s Most-Wanted Pieces and Elegant Essentials
+
+Write a 30-second TikTok script (about 80 words):
+- Hook in the FIRST 3 SECONDS (surprising or provocative)
+- Mention 2-3 visual outfit/trend ideas viewers can recreate
+- End with a question or CTA to boost comments
+- Casual Gen-Z tone, fast-paced, no filler words</div>
+  <button class="copy-btn" onclick="copyPrompt()">📋 Copy Prompt</button>
+</div>
+
+<div class="stats">
+  <strong>135</strong> articles today &nbsp;·&nbsp;
+  <strong>15</strong> with brand mentions
+</div>
+
+<main class="grid">
+<a class="card" href="https://www.vogue.com/slideshow/chanel-charles-finch-pre-oscars-dinner-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b67d498948d7068638945c/master/pass/chanel_dsf0441_ok_chaneloscarsdiner_virgile_20260314-HD.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    <div class="brand-tags"><span class="brand-tag">Chanel</span></div>
+    <h3>Hollywood’s Finest Warmed Up for the Oscars at the Annual Chanel and Charles Finch Dinner</h3>
+    <p>On Saturday evening, Charles Finch and Chanel hosted their 17th annual Pre-Oscar dinner at The Beverly Hills Hotel's Polo Lounge, welcoming Jessie Buckley, Rose Byrne, Nicole Kidman, Wager Moura, Teyana Taylor, Kristen Stewart, Elle Fanning, and many more.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/slideshow/best-beauty-looks-of-the-week-march-14" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b442d0a5d15e599d4d7404/master/pass/SnapInsta.to_649246765_18567849727008398_7387755114304933537_n.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    <div class="brand-tags"><span class="brand-tag">Chanel</span></div>
+    <h3>Beauty Marks: The Best Beauty Looks of the Week</h3>
+    <p>From purple velvet lips at Tom Ford to Chanel’s shimmering manicures, and Addison Rae’s new red hair—this week in beauty was an explosion of color.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/article/matthieu-blazy-chanel-debut-collection-shoppers-in-new-york" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b59730ce440ec259b8a246/master/pass/00079-chanel-fall-2026-ready-to-wear-credit-brand%20(1).jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    <div class="brand-tags"><span class="brand-tag">Chanel</span></div>
+    <h3>In New York, Customers Are Going Coco for Matthieu Blazy’s Chanel</h3>
+    <p>Matthieu Blazy's debut collection landed in New York today. See what people are hoping to snag, live from the uptown boutique's line.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/article/paris-fashion-week-looks-fw26" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69af60dd85552df0ee043784/master/pass/PFW_fw26_streetstyle_day6_philoh_02.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    <div class="brand-tags"><span class="brand-tag">Chanel</span></div>
+    <h3>Paris Fashion Week Street Style Was All About Spring’s Most-Wanted Pieces and Elegant Essentials</h3>
+    <p>From new Chanel and pops of cobalt blue to everyday denim, Paris Fashion Week street style was a stylish mix of spring’s most-wanted pieces and elegant essentials.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/marlene-dietrich-style" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b13ea329ac38be066aae24/master/pass/MS-110326-GettyImages-3168783.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    <div class="brand-tags"><span class="brand-tag">Rick Owens</span></div>
+    <h3>125 Years On From Her Birth, Marlene Dietrich Continues To Set Fashion’s Tone</h3>
+    <p>During the autumn/winter 2026 shows, designers like Duran Lantink, Rick Owens and Conner Ives drew upon on the German-born femme fatale’s iconic style for inspiration.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/best-cropped-trench-coats" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b3dd295150968a22adda87/master/pass/Paris%20str%20S26%202410.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    <div class="brand-tags"><span class="brand-tag">Burberry</span><span class="brand-tag">The Row</span></div>
+    <h3>The Cropped Trench Coat Is This Spring’s Outerwear Obsession</h3>
+    <p>From The Row and Burberry to H&M and Cos, the cropped trench coat is in for spring – and in a big way. Shop Vogue's pick of the best.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/fashion/gallery/zendaya-best-vintage-looks" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b3fe8c7c66d4a1f2799b98/master/pass/EC-Zendaya-vogue-130326.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    <div class="brand-tags"><span class="brand-tag">Vivienne Westwood</span></div>
+    <h3>Zendaya’s Best 24 Vintage Moments To Date</h3>
+    <p>Zendaya has worn a series of vintage looks on the red capet, from a Mugler fembot suit to ’90s John Galliano and Vivienne Westwood. We take a closer look at Zendaya’s best vintage fashion looks.</p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/culture/movies-tv/a61544454/the-devil-wears-prada-sequel-cast-date-rumors-news/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/eccda6ca-2efc-41b1-bf81-b3f4bbe8937d.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    <div class="brand-tags"><span class="brand-tag">Prada</span></div>
+    <h3><em>The Devil Wears Prada 2</em>: What We Know So Far</h3>
+    <p>Miranda, Andy, and Emily are back.</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/fashion/a70737721/valentino-fall-2026-collection-rome/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/0a3029f2-7ac7-4202-b885-b29e28e3efbb.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    <div class="brand-tags"><span class="brand-tag">Valentino</span></div>
+    <h3>Valentino Decamps From Paris to Rome for Its Latest Collection</h3>
+    <p>Alessandro Michele drew on one of Valentino Garavani’s most memorable creative eras: the 1980s</p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/fashion/article/69884/1/vivienne-westwood-exhibition-political-activism-fashion-news-roundup?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=a-new-vivienne-westwood-exhibition-celebrates-the-designer-s-activism" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/1/1441588.png" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    <div class="brand-tags"><span class="brand-tag">Vivienne Westwood</span></div>
+    <h3>A new Vivienne Westwood exhibition celebrates the designer’s activism</h3>
+    <p>Did you know that 2026 marks 50 years since punk erupted in the UK? Or that the proprietor of punk, the late Vivienne Westwood, is currently being celebrated with a small exhibition in central London? Vivienne Westwood: An Active Life is now open at The Light House, Joe Corré’s f</p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/fashion/article/69903/1/valentino-aw26-fw26-rome-alessandro-michele-paris-fashion-week-pfw?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=rome-is-where-the-heart-is-at-valentino-aw26" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/1/1441589.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    <div class="brand-tags"><span class="brand-tag">Valentino</span></div>
+    <h3>Rome is where the heart is at Valentino AW26</h3>
+    <p>Thought it was all over? You thought wrong! Paris Fashion Week might have finished earlier this week, but the party continued last night in Rome. Yesterday evening (March 12), Valentino took over the Italian capital with its AW26 ready-to-wear show, where creative director Alessa</p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/fashion/article/69890/1/stone-island-glenn-kitson-naples-a-sorpres-film-love-affair-collectors?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=this-film-captures-naples-intense-love-affair-with-stone-island" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/1/1441359.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    <div class="brand-tags"><span class="brand-tag">Stone Island</span></div>
+    <h3>This film captures Naples’ intense love affair with Stone Island</h3>
+    <p>In Glenn Kitson’s new short film, ‘A Sorpres, viewers are taken inside a Neapolitan collector’s warehouse. Inside, we see endless rows of vintage Stone Island pieces, carefully preserved in plastic. It’s a serious business: the venue is the result of “15 years of archiving”, and </p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/beauty/article/69893/1/best-beauty-looks-aw26-fashion-week-paris-milan?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=the-best-beauty-of-aw26-botched-facelifts-crying-and-rat-hair" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/1/1441504.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    <div class="brand-tags"><span class="brand-tag">Rick Owens</span></div>
+    <h3>The best beauty of AW26: botched facelifts, crying and rat hair</h3>
+    <p>The beauty looks during New York and London weeks were monstrous, from the vampires at Masha Popova and Collina Strada to the werewolves at Gabe Gordon. This spooky motif continued to run throughout the AW26 shows in Milan and Paris where we saw demonic eyes (Rick Owens), Edward </p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/fashion/article/69898/1/nature-trend-london-paris-fashion-week-aw26-miu-miu-louis-vuitton-dior?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=touching-grass-was-the-biggest-trend-of-aw26" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/1/1441505.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    <div class="brand-tags"><span class="brand-tag">Prada</span></div>
+    <h3>Touching grass was the biggest trend of AW26</h3>
+    <p>If we learnt anything from The Devil Wears Prada, it’s that A) Nate is the true villain, and B) florals for spring are anything but groundbreaking. Far less common are florals for autumn, but we saw them in abundance during the AW26 fashion shows. Since January, the runways, pres</p>
+  </div>
+</a>
+<a class="card" href="https://wwd.com/shop/shop-beauty/nordstrom-beauty-savings-event-2026-best-deals-brands-sale-1238665287/" target="_blank" rel="noopener">
+  <div class="no-img">◆</div>
+  <div class="card-body">
+    <span class="source">WWD</span>
+    <div class="brand-tags"><span class="brand-tag">Dior</span></div>
+    <h3>Charlotte Tilbury, Hermés, Dior and More Luxury Beauty Brands Get Rare 15% Discount at Nordstrom</h3>
+    <p>The retailer's Beauty Savings Event is a chance to get the products used by Nicole Kidman, Angelina Jolie and more on sale</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/article/zendaya-las-vegas-wedding-witness-the-drama" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b6677409b7658e73482942/master/pass/BGUS_3519903_046.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>Zendaya Swapped Bridal Whites for Gold To Play Witness at a Las Vegas Wedding</h3>
+    <p>Actor and rumored recent newlywed Zendaya continued her promotion of A24’s “The Drama” by surprising a couple at their own wedding ceremony.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/slideshow/women-in-film-oscar-nominees-celebration-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b5fb2a1a911796a5c3a9c9/master/pass/695_JP1_0957.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>Inside the Star-Studded Annual Women in Film Oscar Nominees Celebration</h3>
+    <p>Amid the whirlwind of pre-Academy Awards festivities, Hollywood gathered to toast to female talent both behind and in front of the camera at the 19th annual WIF Oscar Nominees Celebration.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/article/everything-to-know-about-wedding-transportation" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/66f5c8ab3381bf7def8ec619/master/pass/chandler-travis_045.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>Wedding Transportation: Everything to Know for Planning Your Weekend Events</h3>
+    <p>Experts share how to plan wedding transportation for your celebration—from hiring shuttle buses between venues to unique ideas that add to the celebration.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/article/marco-rubio-too-big-shoes" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b53dcc0a4a9a8e7495866a/master/pass/2255098040" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>On Marco Rubio’s Too-Big Shoes and the Anxious Vanity of the Trump Administration</h3>
+    <p>President Donald Trump has a penchant for $145 Florsheim dress shoes, which he likes to gift to cabinet members and his close circle—whether they actually fit or not.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/article/90-thoughts-i-had-while-rewatching-erin-brockovich" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b463a72e6a94f31179dd2a/master/pass/MCDERBR_EC003.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>90 Thoughts I Had While Rewatching 'Erin Brockovich'</h3>
+    <p>Flirt your way into possession of some classified documents, diva! Yes!</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/article/kim-gordon-play-me-album-interview" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b55976665f23d01a8b430f/master/pass/10%20-%20credit%20Moni%20Haworth.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>Kim Gordon’s New Album Is All Funny Business</h3>
+    <p>“I have a serious face, but there’s a lot of humor in the lyrics,” the legendary musician says of her third solo album, “Play Me.”</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/slideshow/simple-wedding-dresses" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b368818dd68c217b1d5a90/master/pass/image8.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>The Best Simple Yet Striking Wedding Dresses for Minimalist Brides</h3>
+    <p>Calling all minimalist brides: We found the best satin slips, crepe column gowns, and more simple wedding dresses perfect for your big day or courthouse ceremony.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/slideshow/the-frick-young-fellows-ball-2026-gainsborough-fashion-of-portraiture" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b48ba8d26adbd25b25f3dc/master/pass/Jack%20Schlossberg_BFA_53627_7779851.JPG" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>At The Frick’s Young Fellows Ball, Glamorous Guests Brought Gainsborough’s Work to Life</h3>
+    <p>The Frick's Young Fellows Ball returned with a dazzling celebration of fashion and art. Guests embraced the Travel Through Time theme in elaborate gowns inspired by Marie Antoinette and Bellini while viewing the newly unveiled Gainsborough exhibition.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/article/doctor-bag-trend" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b2e9755f422c3a791dd94a/master/pass/holding-03122026_Doctor%20Bags.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>Forget the Tote—Spring’s It-Bag Is the Bowling Bag</h3>
+    <p>The bowling bag returns to the scene with structured elegance. Shop the runway-approved bag trend already seen on Alex Consani, Vittoria Ceretti, and more.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/article/outlander-caitriona-balfe-and-sam-heughan-directorial-debut-watch-party" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b484d8c1a75a2e2892f4eb/master/pass/TCDOUTL_TZ342.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>‘Outlander’ Stars Caitríona Balfe and Sam Heughan on Her Directorial Debut and Their Plans for a Finale Watch Party</h3>
+    <p>The stars talk to Vogue about the hit show’s latest plot twists—and tease next week’s episode, “Abies Fraseri.”</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/slideshow/essence-women-in-hollywood-2026-zendaya-chase-infiniti" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b47fc4f24afbd97662360e/master/pass/2266200897.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>A Celebration of Power and Possibility at the Black Women in Hollywood Luncheon</h3>
+    <p>Zendaya, Kerry Washington, Coco Jones, and rising stars gathered in Los Angeles for Essence's annual luncheon honoring the women shaping culture on and off screen.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/article/mecato-snacks-colombia-alejandra-loaiza" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b435760549631f140d22b0/master/pass/16Mecato-AlejandraLoaiza.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>For This Colombian Photographer, Mecato Food Is a Taste of Home</h3>
+    <p>With her new photography series published on Vogue, photographer Alejandra Loiza is honoring her local “mecato” snack culture—a vital part of the social and cultural rhythm of everyday life in Colombia.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/article/shower-routine-for-mature-skin" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b47504efd966960d9098fe/master/pass/AdobeStock_420657566%20(2).jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>The Best Step-by-Step Shower Routine for Mature Skin, According to Dermatologists</h3>
+    <p>What’s the best shower routine for mature skin? Dermatologists offer a step-by-step guide to emerging from the steamy bathroom with supple skin—barrier intact.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/article/lip-trends-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b2d3e04f45df015003f487/master/pass/03122026_Lip%20Trends%20Holding.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>Juicy and Blurred: 2026’s Lip Trends Go All In on Texture and Finish</h3>
+    <p>According to the pros, it’s all about texture and finish this season. The four reigning trends are blurred lips, glassy pouts, lip stains, and sheer lipsticks.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/article/silicon-for-skin" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b1c52755e258dc23c027ae/master/pass/b9e96e40-0c30-11ed-92fe-61d92ec19a73_gallery%20copy.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>Silicon is the New Collagen—How This Anti-Aging Supplement Helps Your Skin Stay Firm</h3>
+    <p>A naturally-occurring trace mineral that plays a key role in the formation of collagen, here's everything you need to know about silicon for skin, according to experts.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/fashion-shows/tokyo-fall-2026/attachment" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b4317808651d1b9004947c/master/pass/00001-attachment-fall-2026-ready-to-wear-tokyo-credit-brand.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>Attachment Tokyo Fall 2026</h3>
+    <p></p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/amanda-frances-money-manifestation" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b27fe23e8bcb178b1a4840/master/pass/1232333440" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>How I Got Sucked Into The Slippery World Of Money Manifestation</h3>
+    <p>“I really did believe that so much more money was coming,” writes Hannah Ewens. “Which was an unhelpful axis to be situated on, tilted into an idealised future that never quite arrived.”</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/best-curl-creams" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b03dbbfe79dcaf02ccfa69/master/pass/ED-Curls-vogue-100326-credit-Charlotte-Wales.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>The Best Curl Creams That Hydrate, Define And Soften</h3>
+    <p>Designed to hydrate, define and soften, the best curl creams help bring out your natural curl pattern and give you touchable definition.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/arts-and-lifestyle/article/mother-daughter-movies" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b3cf357b1d095947cf1b43/master/pass/Left-Handed_Girl_u_01_42_03_05_R.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>10 Iconic Movies About Mothers & Daughters To Watch Now</h3>
+    <p>Vogue lists the best new and recently released movies about mothers and daughters that are sure to make you laugh and cry – from ‘Miss Juneteenth’ to ‘Enola Holmes’.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/how-to-tighten-pelvic-floor-muscles" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b3f04747c725e1c415d210/master/pass/MF-vogue-130326-credit-Rory-van-Milligen.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>5 Ways To Look After Your Pelvic Floor – At Every Stage Of Life</h3>
+    <p>Vogue finds five practical ways to care for your pelvic floor at every stage of life. Learn simple habits, exercises and lifestyle tips to support bladder control, core strength and long-term pelvic health.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/cross-body-bags-out-of-fashion" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69afee9d7f4195fc79b5d111/master/pass/PFW_fw26_streetstyle_day6_philoh_15.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>Unpacking The Death Of The Cross-Body Bag</h3>
+    <p>Fashion insiders aren’t shopping cross-body bags anymore, here are the bags they are buying instead.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/miss-vogue/article/horoscope" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/699847c799d618c38e88d794/master/pass/RS-200226-Julia%20Walck%20_%20Pisces%20_%20Web%20(1).jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>Read Your Weekly Horoscope: 16-22 March 2026</h3>
+    <p>Read your full weekly horoscope, written by astrologer Annabel Gat, on Vogue.co.uk, for all star signs, and your weekly horoscope forecast for love, money, career, style and more.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/kate-moss-hair-trick" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b2dba22bd0803f156583fc/master/pass/GettyImages-2264788546.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>Kate Moss Uses This Simple Hair Trick For Instant Summer-Ready Texture</h3>
+    <p>How does Kate Moss get her hair so good? Her longtime colourist, Nicole Clarke, recently shared Kate's go-to hack for instant texture with Vogue – and it couldn't be easier.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/gallery/best-red-carpet-watches-women" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69aea5c128053285fd774be4/master/pass/LH-vogue-090326.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>20 Of The Most Astonishing Red Carpet Watches Of All Time</h3>
+    <p>Vogue looks back at the best red carpet watches of all time, from vintage Cartier to the Bulgari Serpenti, worn by celebrities and A-listers including Princess Diana, Taylor Swift, Rihanna and Hayley Bieber.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/equine-therapy-perimenopause-viewpoint" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b3ef9e9cc2eff37e06c101/master/pass/RP-vogue-130326-credit-Venetia-Scott.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>The Healing Companionship Of A Horse Helped Me Reckon With Early Menopause</h3>
+    <p>Emily Haworth-Booth – author of ‘Mare’ – writes about how equine therapy helped her reconcile with the reality of early menopause, and helped her feel stronger than ever.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/arts-and-lifestyle/article/best-restaurants-in-london" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b419a95150968a22ade442/master/pass/kudu.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>The Best Restaurants In London, As Chosen By Vogue</h3>
+    <p>Vogue rounds up all of the best restaurants in London – including old-school classics and the best new restaurants. From The Devonshire to Bouchon Racine, discover the best restaurants in London, here.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/michelle-obama-vogue-asks" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/699f1faba786a6b0bf12d9b3/master/pass/MO-WEB-1.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>Michelle Obama On Doechii, First Dates And The Secret To Making A Relationship Last</h3>
+    <p>Advice on life and style from the former First Lady.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/gallery/vintage-john-galliano-bride-leighton-house-wedding" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b3ebf0ccf8426c8feaa73a/master/pass/IMG_2930.JPG" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>This Fashion Director Bride Wore Vintage John Galliano For Her London Elopement</h3>
+    <p>Bride Jane Handorff bought the first two vintage John Galliano dresses she tried on for her art-filled wedding at Leighton House in London. Read on for more on the Leighton House wedding.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/private-jet-gap-year" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69ab09ffe3d9d3f20ac4dea9/master/pass/GH-WEB-1.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>I Went On Holiday With The One Per Cent. Here’s What Happened</h3>
+    <p>Thanks to elite travel companies, the rich are touring the world by private jet. It’s the reinvention of the gap year, reports Giles Hattersley.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/dirty-business-channel-4" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b3eaf89cc2eff37e06bf0e/master/pass/KM-Dirty-Business-vogue-credit-Channel-4-1.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>‘Dirty Business’ Is The Essential New Drama You Probably Haven’t Seen Yet</h3>
+    <p>“This is the UK’s ‘Erin Brockovich’, make no mistake,” Claire Cohen writes of the Channel 4 series, ‘Dirty Business’, which exposes the staggering impact of sewage dumps by privatised water companies on the UK environment, and individuals who have come into contact with pollution</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/how-to-style-a-striped-top" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b401b693162d87a2438eb4/master/pass/London%20str%20S25%200488.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>4 Street Style-Approved Ways To Style A Striped Top This Season</h3>
+    <p>Not all striped tops are made equal. From pinstriped shirts to knitted polos, rugby shirts to striped co-ords. Shop Vogue’s edit of how to style a striped top.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/best-sleep-tech" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b03dbbdad85f38bfbec9a5/master/pass/ED-Sleep-vogue-100326-credit-Alasdair-McLellan.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>Smart Slumber: The Sleep Tech Transforming Bedtime For World Sleep Day</h3>
+    <p>The sleep tech market extends beyond wearable trackers. Shop Vogue's edit of temperature-regulating mattress, sauna blankets and vagus nerve stimulators</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/best-nostalgic-perfumes" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69a82c4a2f546826c76ef8d0/master/pass/0326-BTY-STILL-LIFE.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>5 Vintage-Inspired “Granny” Fragrances That Are Actually Perfect For Now</h3>
+    <p>Transport yourself to simpler times with these deeply evocative, nostalgic fragrances, all of which evoke “granny” scents from the 1990s or earlier.</p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/horoscopes/daily/a108/pisces-daily-horoscope/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/pisces-final-65c5440b949f5.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>Pisces Daily Horoscope</h3>
+    <p>(February 19 - March 20)</p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/culture/movies-tv/a63724100/buffy-the-vampire-slayer-reboot-news-dates-cast-spoilers/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/f3eeaddb-25af-4b53-ac8e-2a9edfb5816d.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>Everything We Know About the <em>Buffy the Vampire Slayer</em> Reboot</h3>
+    <p></p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/culture/music/a69137744/who-are-ejae-audrey-nuna-rei-ami-kpop-demon-hunters-singers/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/891815dc-b4c8-49bf-8a97-049ce37ab0e5.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>All About EJAE, Audrey Nuna, and Rei Ami, the Singing Voices of <em>Kpop Demon Hunters</em></h3>
+    <p></p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/culture/celebrities/a70741906/selena-gomez-benny-blanco-new-photos-march-2026/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/24465387-c992-4cb2-979b-b4f032905a87.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>Selena Gomez Shares Intimate New Pics from Life with Benny Blanco</h3>
+    <p></p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/culture/movies-tv/a70738750/the-madison-season-1-premiere-episodes-1-3-recap/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/26db7f38-4797-4bee-bd80-50b41aa0f244.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3><em>The Madison</em> Season 1 Premiere Recap: A River Runs Through It</h3>
+    <p>A three-episode premiere introduces us to the Clyburn family—and the pain they must now face.</p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/culture/celebrities/a70741631/meghan-markle-prince-harry-statement-british-author/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/89d32ad3-a2fa-4b10-9e26-5fdb54d8c8fd.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>Meghan Markle and Prince Harry’s Rep Issues Statement on ‘Deranged’ Theories from British Biographer</h3>
+    <p></p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/culture/music/a65717040/olivia-rodrigo-third-album-news-release-details/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/olivia-rodrigo-691de1f83e64f.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>Everything to Know About Olivia Rodrigo’s Third Album</h3>
+    <p></p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/culture/celebrities/a70741187/hailey-bieber-yellow-string-bikini-summer/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/88e0f8d3-2ec5-4636-af87-b3106cfc628a.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>Hailey Bieber Kicks Off Swimwear Season in a Yellow String Bikini</h3>
+    <p></p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/fashion/shopping/a70714428/best-spring-capsule-wardrobe/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/e5d30857-cb59-4002-ba29-3a71e3bd91fb.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>How to Build a Spring Capsule Wardrobe With 11 Essentials</h3>
+    <p>Let’s manifest better weather.</p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/fashion/shopping/a70710981/best-cropped-trench-coats-for-women-2026/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/3a9cd646-305b-490c-969e-e1f2ac546414.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>The Trench Coat Detail That Instantly Signals a Fashion Girl</h3>
+    <p>After all, she’s in the know.</p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/fashion/trend-reports/a70736522/carolyn-bessette-kennedy-runway-fashion-trends-influence-fall-2026/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/f98034af-095a-468b-86a8-e028b1ed75d4.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>Carolyn Bessette Kennedy’s Signature Look Was All Over the Runways</h3>
+    <p>From pencil skirts to undone ponies.</p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/fashion/shopping/a70622594/spring-wedding-guest-outfits/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/3f30f7fe-3796-467e-b157-3a626be7b558.png" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>11 Chic Spring Wedding Guest Outfits That Work for Every Dress Code</h3>
+    <p>These Reformation, Dôen, and Tory Burch dresses work for every setting.</p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/culture/celebrities/a65581518/katy-perry-justin-trudeau-relationship-timeline/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/fe723dce-334b-44b3-b5a0-19a3e5196949.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>Katy Perry and Justin Trudeau’s Complete Relationship Timeline</h3>
+    <p></p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/beauty/makeup-skin-care/g63015682/best-korean-collagen-masks/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/screenshot-2025-12-03-at-4-18-05-pm-6930a91b16ae2.png" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>We Tested Dozens of Face Masks—These Collagen Ones Delivered Instant Glass Skin</h3>
+    <p>They’re perfect for those who love instant gratification.</p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/culture/celebrities/a70736400/dakota-johnson-dating-role-model-status-march-2026/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/7c142427-6fa7-416a-97c8-7b0b42be2ac6.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>Inside Dakota Johnson’s Approach to Dating: She’s ‘Not Rushing’ Into Anything</h3>
+    <p></p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/culture/movies-tv/a70724731/the-madison-season-1-cast-characters/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/6309d704-cb9d-49a3-9b73-73d4e7880818.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>Your Guide to the Cast of <em>The Madison </em>Season 1</h3>
+    <p>The Paramount+ series follows a wealthy Manhattan family forced to confront tragedy in Montana.</p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/culture/celebrities/a70735731/tyla-kendall-jenner-lingerie-top-trend-details-photos/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/7d331360-8530-4a7e-9866-7208367829bd.png" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>Tyla and Kendall Jenner Are Turning the Lingerie-Top Trend Into a Night-Out Look—Here’s How to Wear It</h3>
+    <p></p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/beauty/makeup-skin-care/a68004617/spring-2026-nail-trends/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/screenshot-2025-09-22-at-3-33-14-pm-68d1a58414dd6.png" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>5 Spring Nails Trends to Show Your Manicurist, Thanks to the NYFW Runways</h3>
+    <p>Bye bye boring nails.</p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/fashion/shopping/a70701872/military-jacket-styling-tips/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/11d4d43e-b0c2-4e8b-8db6-8135fb71348f.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>The Military Jacket Revival Is Here—This Is How to Style One in 2026</h3>
+    <p>Meet your wardrobe’s new commanding officer.</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/celebrity/latest/a70742309/kendall-jenner-hailey-bieber-bandana-trend-the-row-shoes/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/f004a168-918e-478b-9b5d-f2012d89fc11.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>Kendall Jenner Embraces the Bandana Trend Once Again for a Dinner Date With Hailey Bieber</h3>
+    <p>Girls’ night out</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/celebrity/latest/a70742172/bella-hadid-vintage-alaia-leather-jacket-leopard-print-heels/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/0e691515-44a5-4d30-a872-5588d303effb.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>Bella Hadid Wears a Vintage Alaïa Leather Jacket With a Pop of Leopard Print</h3>
+    <p>So ’80s</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/celebrity/latest/a70741928/hudson-williams-connor-storrie-reunite-caa-pre-oscars-party-photos/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/bb0f050d-f977-490f-a217-290335d3f9c0.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>Hudson Williams and Connor Storrie Reunite at the Star-Studded CAA Pre-Oscars Party</h3>
+    <p>From the cottage to the Academy Awards</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/celebrity/latest/g70741725/exclusive-photos-women-in-film-2026-oscar-nominees-celebration/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/e7b1c47f-e87b-4c4b-a5fe-9c695e86a2fb.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>An Exclusive Look at the Annual Women in Film Oscar Nominees Celebration</h3>
+    <p>Attended by Kate Hudson, Renate Reinsve, and more</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/culture/film-tv/g70733170/the-madison-cast-characters-explained/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/8d03fe4b-9e92-4f23-afe6-31410f2a06eb.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>A Guide to the Cast and Characters of <i>The Madison</i></h3>
+    <p>Michelle Pfeiffer and Kurt Russell lead the emotional new Taylor Sheridan drama</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/culture/film-tv/a70726201/the-madison-season-1-part-1-explained/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/a2bdfa59-07fb-461a-b29e-2b1c98386ad5.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3><i>The Madison</i> Season 1, Part 1 Will Break Your Heart but Leave You Hopeful</h3>
+    <p>Michelle Pfeiffer and Kurt Russell will make you weep</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/celebrity/latest/a70741464/lola-tung-vaquera-jacket-affordable-charles-keith-black-crinkled-leather-bag/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/3077d513-935e-423e-9ff8-1b487c26c3da.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>Lola Tung Pairs Her Belted Vaquera Jacket With a Crinkled-Leather Bag</h3>
+    <p>The accessory is under $150</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/celebrity/latest/a70741329/harry-styles-patchwork-vintage-silk-scarf-button-down-shirt-conner-ives-bbc-radio-1-live-lounge/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/f6881366-7c95-40c9-a674-3b992f6b1f6f.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>Harry Styles Wears a Patchwork Button-Down Shirt Made From Vintage Silk Scarves</h3>
+    <p>From the fashion girls’ favorite label</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/beauty/makeup/g28399624/organic-natural-makeup-brands/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/870fc229-ac51-43e9-87c3-0426fbcb6e4c.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>The 13 Best Natural, Non-Toxic Makeup Brands to Shop Now</h3>
+    <p>From Kosas to RMS Beauty and more, these high-performance favorites hold up</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/fashion/fashion-week/a70736690/first-looks-milan-paris-fall-2026-collections-fashion/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/2d2497cf-6f9c-4fbd-beff-507032c0b079.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>2 Cities, 18 Looks: How These First Runway Moments Define the Next Season in Fashion</h3>
+    <p>Designers in Milan and Paris break down the first looks in their collections—why they chose them, what they mean, and how they may shape our style come fall</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/fashion/fashion-week/a70735627/fall-2026-runway-trends/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/f23d3a0d-04b9-4549-a3d6-a9db7e64a66a.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>15 Trends from the Fall 2026 Runways We Can't Stop Thinking About</h3>
+    <p>From oversized flower brooches to wild animal prints, the shows were all about taking big swings</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/fashion/a70736974/natalie-portman-tiffany-and-co-brand-ambassador-announcement/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/80b5b65c-bbd0-4885-8c13-981156e9ebb8.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>Natalie Portman Is Tiffany & Co.’s Newest Ambassador</h3>
+    <p>And stars as the face of the brand's new campaign</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/beauty/health/g70682261/best-spring-perfumes-1773077472/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/bae9b2c0-b090-4de0-b710-f3a0da4364dc.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>The 15 Best Spring Perfumes You'll Want to Spritz on All Season</h3>
+    <p>From Marc Jacobs' Daisy Wild to D.S. & Durga's Debaser In Bloom</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/beauty/skin-care/a63904169/shark-cryo-glow-led-face-mask-review/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/0224-ledmask-67bcba7e671a7.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>Is Shark's CryoGlow LED Face Mask Really Worth It?</h3>
+    <p>I've tested dozens of LED masks–but this cooling, de-puffing one is my favorite</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/beauty/health/a70640803/unconventional-fragrance-formulas/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/b3e90312-e60e-46c3-814a-2b3c58a13ba4.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>A Stick, a Gel, and a Milk—These Are the Weirdest Perfumes I Own</h3>
+    <p>These unconventional fragrance formats have become my secret for smelling good all the time</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/celebrity/latest/a41968811/eva-mendes-ryan-gosling-full-relationship-timeline/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/9528dcdd-994f-45cc-97f5-d20ff7350bbf.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>Eva Mendes and Ryan Gosling’s Full Relationship Timeline</h3>
+    <p>From their first film collaboration to the reveal of their secret wedding</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/fashion/trends/a70644960/best-winter-spring-transitional-outfits/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/17b01422-ce35-4ad6-a58b-f988be755c5e.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>When It Comes to Transitional Dressing, the Runway Offers Plenty of Inspiration</h3>
+    <p>Fresh outfit ideas for the shift into spring</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/celebrity/latest/a69926476/teyana-taylor-complete-dating-history/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/teyana-taylor-attends-the-31st-annual-critics-choice-awards-news-photo-1767719214.pjpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>Teyana Taylor's Complete Dating History</h3>
+    <p>From rumored rapper romances to her seven-year marriage and most recent relationship with Aaron Pierre</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/celebrity/latest/a70697756/who-is-david-e-kelley-michelle-pfeiffer-husband/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/b9f506d2-9ca4-4159-99be-224b2df49129.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>Who Is Michelle Pfeiffer’s Husband, David E. Kelley? All About the Emmy-Winning TV Writer</h3>
+    <p>The couple met on a blind date in 1993</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/celebrity-style/celebrity-flat-shoe-airport-trends-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/QrQckHYnSLTh9jkPQS4Xwm-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>Not Trainers, Not Uggs: These are the Flat-Shoe Trends Celebrities Are Wearing to the Airport Instead</h3>
+    <p>Far chicer.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/trends/new-trending-jeans-for-women-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/pdrsXtyPHacVpJPkmZUEP9-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>I Finally Found *the* Jeans—6 New Season Denim Trends that Could Be Your Perfect Match</h3>
+    <p>Why I'm officially breaking up with straight-leg.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/spring/petite-spring-capsule-wardrobe-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/SqfT3nKbk7QxSEAj4zH2wc-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>I'm a 5'2" Fashion Editor—This Is Where I Buy All My Petite Spring Basics</h3>
+    <p>Putting my years of research to good use.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/handbags/new-it-bags-spring-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/wKqBvFTxUuMxgehXRQtiGN-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>It's Official: These are the Next 7 Designer It Bags, As Decided By the Most Stylish It Girls</h3>
+    <p>Because It girls need It bags.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/shopping/nordstrom-spring-shoe-capsule" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/AxispUcZVtdbnYaxcLnaoM-1280-80.png" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>These Nordstrom Shoes Are the Foundation of a Perfect Spring Capsule Wardrobe</h3>
+    <p>Starting at $26.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/outerwear/spring-jacket-color-trends-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/SwAgmgWbYtxoWghsAtRpDe-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>6 Spring Jacket Color Trends People Are Wearing Instead of Black RN</h3>
+    <p>Fun outfits loading.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/trends/dated-trainer-colour-trends-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/L6Uc6GBzk2rq2mGRET2oDC-1280-80.png" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>You Might Not Agree, But I Think These 5 Trainer Colours Are Dated Now</h3>
+    <p>Can you guess what they are?</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/trends/elevated-spring-2026-outfit-ideas-uk" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/zoE3oJLxMWGn7nsDiDo8sm-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>7 Easy Yet Elevated Spring Outfit Ideas to Wear on Repeat</h3>
+    <p>Get stylishly ready in a snap.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/shopping/french-shoe-trends-with-jeans-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/8BMYtmyHFCVJBBmxsRoVZe-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>The Chicest French Women I Know Are Styling Their Jeans With These 6 Spring Shoe Trends</h3>
+    <p>From ruched loafers to slim sneakers.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/beauty/nails/comeback-spring-nail-trends" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/yLV2UgwnWxsH7odkj27tAf-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>Mark My Words—These 6 Nail Trends Will Be Making a Huge Comeback This Spring</h3>
+    <p>They're never gone for long.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/beauty/hair/best-thermal-brushes" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/eDghftvqr9HHQ6RW7B8hWP-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>A Thermal Brush Is Your Fast-Track to Salon-Level Hair With Minimal Effort—These Are the Best Around</h3>
+    <p>A blow-dry without the faff.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/athletic-jacket-trend-spring-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/AmTxc59Zg7ayGP6zkrxtui-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>Not Barn Jackets, Not Leather Bombers—Spring 2026 Is All About This Sporty Outerwear Style</h3>
+    <p>And I love it.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/runway/fall-winter-shoe-trends-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/Y3raTN2gbCWSDgUiQzabNA-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>The Runways Spoke, We Listened: 9 Shoe Trends Worth Remembering From the F/W 26 Shows</h3>
+    <p>Consider this your footwear digest for next fall.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/shopping/expensive-looking-affordable-nordstrom-spring-clothing-shoes" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/kEKfyQpQ4NNGysApmBGAyH-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>I Direct Fashionable People to Nordstrom's Under-$100 Department (It's Great)—These Are the New Chic Items I Like</h3>
+    <p>Hello, elevated silhouettes.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/handbags/hailey-bieber-kate-moss-gucci-jackie-bag" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/Qh68QEr4tUmtQr4wTtYMkf-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>Spotted All Over Paris and L.A—The Nostalgic It Bag Chic Fashion People Can't Stop Wearing</h3>
+    <p>Hailey and Kate approve.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/beauty/best-affordable-beauty-brands" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/L8euUeauUqY73ifktCovPb-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>I'll Let You In On a Secret: These 15 Affordable Beauty Brands Are Just as Good as Their Luxury Counterparts</h3>
+    <p>From skincare to fragrances.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/affordable/french-girl-zara-cos-hm-march-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/Y3zRdkPHhEaszttNR8jHXU-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>I Just Got Back From Paris—9 Zara, H&M and COS Buys French Women Would be All Over</h3>
+    <p>Élégant et classique.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/living/wedding/alie-mackintosh-and-mike-burke-wedding" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/BQHcEwsQcDUYrKPKip6RsC-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>This Beautiful Bride Wore a Custom AYM Dress to Her Intimate Eastbourne Wedding</h3>
+    <p>Every detail from the day.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/trends/best-wedding-guest-outfit-trends-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/s5TLDkKHSQPeqXC4bdGXfL-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>According to Experts, These 5 Trends Will Dominate Wedding-Guest Dressing in 2026</h3>
+    <p>Best-dressed guest? Of course.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/living/travel/melbourne-travel-guide-jennifer-atilemile" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/fns5gDmScs8uA6gRYevPPB-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>Markets, Museums, Martinis: An Australian Model's Insider Guide to Melbourne</h3>
+    <p>Your next trip, sorted.</p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/fashion/article/69910/1/oscars-2026-red-carpet-most-controversial-outfits-worst-dressed?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=oscars-red-carpet-the-17-most-controversial-outfits-of-all-time" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/1/1441602.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    
+    <h3>Oscars red carpet: The 17 most controversial outfits of all time</h3>
+    <p>It’s that time of year again. This weekend, the Academy Awards is back for its 98th edition, and with another Oscars ceremony comes yet more red carpet fashion. While we wait to see what today’s stars churn out, awards season also gets us thinking about those red carpet looks tha</p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/film-tv/article/69904/1/oscars-2026-nominations-snubs-gwyneth-paltrow-jennifer-lawrence?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=oscars-2026-the-biggest-snubs-from-this-year-s-nominations" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/1/1441590.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    
+    <h3>Oscars 2026: The biggest snubs from this year’s nominations</h3>
+    <p>What is awards season without a bit of drama? Last year, it came from all angles: there was the revelation of Emilia Pérez’s star, Karla Sofía Gascón’s racist and sexist social media posts, the use of generative AI in The Brutalist and the controversy around Sean Baker not using </p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/life-culture/article/69908/1/inside-the-manosphere-the-rise-of-conservative-non-monogamy-louis-theroux?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=inside-the-manosphere-the-rise-of-conservative-non-monogamy" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/1/1441592.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    
+    <h3>Inside the Manosphere: The rise of conservative non-monogamy</h3>
+    <p>The rise of non-monogamy has been a highly discussed topic over the last decade. It’s generally been coded as a left/liberal phenomenon – a groovy alternative lifestyle associated with Portland polycules, self-described “kinksters”, people with dyed green hair and septum piercing</p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/film-tv/article/69907/1/2026-oscar-best-casting-is-wildly-overdue-heres-why?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=the-new-oscar-for-best-casting-is-wildly-overdue-here-s-why" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/1/1441591.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    
+    <h3>The new Oscar for ‘best casting’ is wildly overdue – here’s why</h3>
+    <p>Everyone, it seems, has an opinion on casting. Whether it’s that Dev Patel should have played Heathcliff in Emerald Fennell’s Wuthering Heights, or that the casting in Marty Supreme was nothing short of genius, the internet has made casting in cinema a hot topic. Ofhellip;read mo</p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/beauty/gallery/36840/0/the-best-vintage-beauty-looks-at-the-oscars?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=13-of-the-best-ever-vintage-oscars-beauty-looks" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/1/1441587.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    
+    <h3>13 of the best ever vintage Oscars beauty looks</h3>
+    <p>nbsp;nbsp;nbsp;nbsp;nbsp;nbsp;View Gallery (14 images)nbsp;</p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/art-photography/article/69901/1/what-to-look-out-for-at-art-basel-hong-kong-2026-highlights-angelle-siyang-le?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=what-to-look-out-for-at-art-basel-hong-kong-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/1/1441525.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    
+    <h3>What to look out for at Art Basel Hong Kong 2026</h3>
+    <p>Art Basel Hong Kong 2026 is just around the corner, promising to touch down with a wave of fresh ideas and opportunities for cultural exchange. From artists at the height of their careers, to emerging talents working with the latest technologies, no less than 41 countries and ter</p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/music/article/69843/1/kim-gordon-selects-what-to-listen-to-watch-read-syllabus-spring-2026?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=kim-gordon-selects-what-to-listen-to-watch-and-read" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/0/1440607.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    
+    <h3>Kim Gordon selects: What to listen to, watch and read</h3>
+    <p>This story is taken from the spring 2026 issue of Dazed, which is on sale internationally now. Order a copy of the magazine here.
+Kim Gordon has been capturing the hearts, ears and minds of angsty youth for decades. As a singer and bassist with Sonic Youth, the highly influential</p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/life-culture/article/69878/1/why-are-straight-men-so-unfunny-tiktok-reels-relationships-dating-women?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=why-are-so-many-straight-men-so-unfunny" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/1/1441286.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    
+    <h3>Why are so many straight men so unfunny?</h3>
+    <p>Back in the olden days, winding down for the night with a partner traditionally involved a nice bit of cuddling and pillow talk. Today, however, the reality is far less romantic: straight men will often just roll over, grab their phones, and proceed to subject their partners to a</p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/beauty/article/68227/1/how-friday-13th-became-the-tattoo-worlds-black-friday-new-york-parlour-luck?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=a-brief-history-of-how-friday-13th-became-the-tattoo-world-s-black-friday" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/1/1441524.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    
+    <h3>A brief history of how Friday 13th became the tattoo world’s Black Friday</h3>
+    <p>This article was originally published 14 July 2025.
+On Friday the 13th, I wandered the streets of New York’s Lower East Side, searching for a tattoo shop. My destination was Cherry Bomb Studio, a tattoo parlour whose doors would remain open unusually late into the night. Cherry B</p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/music/article/69755/1/7-of-beabadoobee-s-best-collabs-all-i-did-was-dream-of-you-new-single-2026?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=7-of-beabadoobee-s-greatest-collabs" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1430/9/1439180.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    
+    <h3>7 of beabadoobee’s greatest collabs</h3>
+    <p>“It’s nice to know that the biggest artists right now are women! It makes me happy that people are seeing how talented Sabrina [Carpenter] is… and Chappell Roan,” beabadoobee says, speaking to Dazed for her recent cover story. “I feel like I’m in safe hands being surrounded by al</p>
+  </div>
+</a>
+<a class="card" href="https://www.refinery29.com/en-us/new-moon-in-pisces-horoscope-march-2026-meaning-effects?utm_source=feed&utm_medium=rss" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://www.refinery29.com/images/11965026.jpg?width=1024&height=683&fit=bounds&crop=1024%3A683" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Refinery29</span>
+    
+    <h3>The New Moon In Pisces Is Here — & You Need To Pay Close Attention To Signs</h3>
+    <p>This is a clear picture of the moon taken with a long zoom lens with the milky way in the background
+
+
+
+The last New Moon of winter occurs on March 18th, two days before spring officially begins! What will it mean for you? The New Moon in Pisces ushers in a unique way of feeling,</p>
+  </div>
+</a>
+<a class="card" href="https://www.refinery29.com/en-us/2026/03/11965539/essence-black-women-in-hollywood-awards-speeches-recap?utm_source=feed&utm_medium=rss" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://www.refinery29.com/images/11965546.jpg?width=819&height=1024&fit=bounds&crop=819%3A1024" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Refinery29</span>
+    
+    <h3>“There’s Space For All Of Us.” Inside The Essence Black Women In Hollywood Ceremony</h3>
+    <p>An unapologetic presence and collective power filled the room at the annual Essence Black Women in Hollywood Awards. On March 12, Black Hollywood gathered in the heart of Los Angeles at the Fairmont Century Plaza hotel for an afternoon of celebration and love for the women shapin</p>
+  </div>
+</a>
+<a class="card" href="https://www.refinery29.com/en-us/best-zara-new-arrivals?utm_source=feed&utm_medium=rss" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://www.refinery29.com/images/11965397.png?width=853&height=1024&fit=bounds&crop=853%3A1024" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Refinery29</span>
+    
+    <h3>Zara’s New Spring Drop Is Filled With Luxurious-Looking Gems</h3>
+    <p>Zara’s latest arrivals are a reminder that spring is nearly here — and your wardrobe should start acting like it. The new collection is packed with pieces designed to make the most of the current transitional weather and approaching celebrations, from spring weddings and getaways</p>
+  </div>
+</a>
+<a class="card" href="https://www.refinery29.com/en-us/cvs-epic-beauty-sale-products?utm_source=feed&utm_medium=rss" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://www.refinery29.com/images/11965140.png?auto=webp&width=1000&height=1000&quality=85&crop=1:1" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Refinery29</span>
+    
+    <h3>What Refinery29 Editors Are Shopping From This Drugstore Beauty Sale</h3>
+    <p>The endless aisles of personal care products, mile-long receipts, and the fact that it’s one of the few places where you can pick up your prescriptions, snacks, and passport photos under one roof? We’re talking about CVS — specifically, the iconic drugstore’s Epic Beauty sale, wh</p>
+  </div>
+</a>
+<a class="card" href="https://www.refinery29.com/en-us/best-weekend-sales-editors-picks?utm_source=feed&utm_medium=rss" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://www.refinery29.com/images/11965490.png?auto=webp&width=768&height=768&quality=85&crop=1:1" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Refinery29</span>
+    
+    <h3>The Best Weekend Sales Across Fashion, Beauty & Lifestyle</h3>
+    <p>As professional online shoppers, Refinery29 Most Wanted writers have a spidey sense for the best virtual sales and limited-time offers. Whether it's Lululemon's reliable We Made Too Much section or a flash deal on best-selling skin-care brands, where there's a clearance rack, the</p>
+  </div>
+</a>
+<a class="card" href="https://www.refinery29.com/en-us/best-wedges-for-women-2026?utm_source=feed&utm_medium=rss" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://www.refinery29.com/images/11964915.jpg?width=683&height=1024&fit=bounds&crop=683%3A1024" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Refinery29</span>
+    
+    <h3>The Revival Of The Wedge: The 2026 Way To Wear The Sculptural Shoe</h3>
+    <p>MILAN, ITALY – FEBRUARY 27: A guest wears black sunglasses, a black leather bag, black leather wedges and a red long sleeved turtle neck mini dress outside Sportmax show during the Milan Fashion Week – Womenswear Fall/Winter 2026/2027 on February 27, 2026 in Milan, Italy. (Photo </p>
+  </div>
+</a>
+<a class="card" href="https://www.refinery29.com/en-us/louis-theroux-inside-the-manosphere-netflix-documentary-women?utm_source=feed&utm_medium=rss" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://www.refinery29.com/images/11965325.jpg?width=683&height=1024&fit=bounds&crop=683%3A1024" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Refinery29</span>
+    
+    <h3>Louis Theroux Takes Us Inside The Manosphere — But How Do We Get Out?</h3>
+    <p>Louis Theroux: Inside the Manosphere. Cr. Courtesy of Pip/Netflix © 2026
+
+
+
+“Nothing in this Netflix documentary will shock me,” I turn and say to my partner, sitting upright on the sofa after a long workday, before we’re led by Louis Theroux Inside the Manosphere for 90 minutes.</p>
+  </div>
+</a>
+<a class="card" href="https://www.refinery29.com/en-us/olaplex-no3-plus-complete-repair-hair-treatment-review?utm_source=feed&utm_medium=rss" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://www.refinery29.com/images/11965033.png?width=853&height=1024&fit=bounds&crop=853%3A1024" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Refinery29</span>
+    
+    <h3>Olaplex Is Discontinuing Its Iconic No.3 — & Replacing It With Something Better</h3>
+    <p>In my opinion, the hair hall of fame simply isn’t complete without these three iconic products: Living Proof’s PhD Dry Shampoo, Kérastase Huile Ultime Oil, and Olaplex No.3 Hair Perfector. Whenever I have a nosy around friends’ and family members’ bathrooms (who doesn’t?), I almo</p>
+  </div>
+</a>
+<a class="card" href="https://www.refinery29.com/en-us/sofie-pavitt-screentime-hydrating-sunscreen-review?utm_source=feed&utm_medium=rss" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://www.refinery29.com/images/11964872.jpg?width=853&height=1024&fit=bounds&crop=853%3A1024" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Refinery29</span>
+    
+    <h3>Sofie Pavitt Just Dropped My Ideal Sunscreen — & It Won’t Break You Out</h3>
+    <p>In the year 2026, it’s becoming increasingly difficult to justify not wearing sunscreen every day. The risks and hazards of UV damage are well-documented, and sunscreens at every price point have flooded the shelves of drugstores and prestige boutiques alike. Yet folks are still </p>
+  </div>
+</a>
+<a class="card" href="https://www.refinery29.com/en-us/best-madewell-deals?utm_source=feed&utm_medium=rss" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://www.refinery29.com/images/11964752.png?auto=webp&width=1400&height=1779&quality=85&crop=1400:1779" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Refinery29</span>
+    
+    <h3>The Madewell Sale Fashion Editors Never Skip Out On Is Finally Here</h3>
+    <p>Now that 7 p.m. sunsets are here and the days are getting warmer, we’re eager to clean out our closets and refresh them with new spring outfits. But we’re also not looking to break the bank. The solution? Madewell’s Insiders Event!The editor- and reader-favorite brand kicked off </p>
+  </div>
+</a>
+<a class="card" href="https://wwd.com/pop-culture/celebrity-news/renate-reinsve-khaite-wif-oscars-nominees-1238676329/" target="_blank" rel="noopener">
+  <div class="no-img">◆</div>
+  <div class="card-body">
+    <span class="source">WWD</span>
+    
+    <h3>Renate Reinsve Mixes Hard Tailoring and Painted Satin in Khaite at WIF’s Oscars Nominees Celebration</h3>
+    <p>The “Sentimental Value” Oscar nominee wore look 16 from Catherine Holstein’s fall 2026 runway, finishing it with pointed black shoes and exposed midriff.</p>
+  </div>
+</a>
+<a class="card" href="https://wwd.com/footwear-news/shoe-trends/alicia-silverstone-strappy-sandal-mules-wif-oscars-nominees-1238676313/" target="_blank" rel="noopener">
+  <div class="no-img">◆</div>
+  <div class="card-body">
+    <span class="source">WWD</span>
+    
+    <h3>Alicia Silverstone Reaches for an Oscars Weekend Staple in Black Minimalist Mules</h3>
+    <p>The actress paired slim glossy multi-strap sandals with a dark Max Mara dress at the WIF Oscars Nominees Celebration.</p>
+  </div>
+</a>
+<a class="card" href="https://wwd.com/footwear-news/shoe-trends/arden-cho-sergio-rossi-pumps-wif-oscars-nominees-1238676300/" target="_blank" rel="noopener">
+  <div class="no-img">◆</div>
+  <div class="card-body">
+    <span class="source">WWD</span>
+    
+    <h3>Arden Cho Layers Metallic Texture With Crystal-capped Sergio Rossi Pumps at the WIF Oscars Nominees Celebration</h3>
+    <p>The “KPop Demon Hunters” star wore the pointed heels with a chainmail-style Cong Tri minidress.</p>
+  </div>
+</a>
+<a class="card" href="https://wwd.com/beauty-industry-news/beauty-features/aesthetic-doctor-antoni-calmon-dies-beauty-skincare-1238676289/" target="_blank" rel="noopener">
+  <div class="no-img">◆</div>
+  <div class="card-body">
+    <span class="source">WWD</span>
+    
+    <h3>Aesthetic Doctor Antoni Calmon Dies</h3>
+    <p>His four-step protocol inspired the beauty brand PERS Skincare.</p>
+  </div>
+</a>
+<a class="card" href="https://wwd.com/pop-culture/celebrity-news/kate-hudson-georges-chakra-max-mara-pre-oscars-1238676276/" target="_blank" rel="noopener">
+  <div class="no-img">◆</div>
+  <div class="card-body">
+    <span class="source">WWD</span>
+    
+    <h3>Kate Hudson Switches From Georges Chakra Couture to Max Mara Minimalism at Two Pre-Oscars Parties</h3>
+    <p>Hudson traded silver couture for espresso satin between the ICG Publicists Awards and WIF Oscars Nominees Celebration ahead of Sunday’s Oscars.</p>
+  </div>
+</a>
+<a class="card" href="https://wwd.com/shop/shop-fashion/how-to-watch-oscars-2026-red-carpet-online-for-free-stream-1238675034/" target="_blank" rel="noopener">
+  <div class="no-img">◆</div>
+  <div class="card-body">
+    <span class="source">WWD</span>
+    
+    <h3>How to Watch the Oscars 2026 Red Carpet Online for Free</h3>
+    <p>A guide to witnessing the best fashion moments at the 98th Academy Awards in real time, with the help of top streaming services (and their free trials).</p>
+  </div>
+</a>
+<a class="card" href="https://wwd.com/accessories-news/jewelry/paris-jewelry-highlights-fall-2026-1238672365/" target="_blank" rel="noopener">
+  <div class="no-img">◆</div>
+  <div class="card-body">
+    <span class="source">WWD</span>
+    
+    <h3>Paris Fashion Week’s Fall 2026 Jewelry Highlights</h3>
+    <p>Animal-inspired enamels, gems the size and color of hard candy, bold volumes and playful ideas were abundant in the Paris showrooms.</p>
+  </div>
+</a>
+<a class="card" href="https://wwd.com/business-news/human-resources/lululemon-ceo-search-challenges-strategy-1238674642/" target="_blank" rel="noopener">
+  <div class="no-img">◆</div>
+  <div class="card-body">
+    <span class="source">WWD</span>
+    
+    <h3>Lululemon’s High-wire CEO Search Continues With Q4 in the Offing</h3>
+    <p>The next person in the corner office is going to have plenty of work on both the brand and corporate fronts.</p>
+  </div>
+</a>
+<a class="card" href="https://wwd.com/pop-culture/culture-news/feature/timeless-beauty-oscars-over-the-years-1238674212/" target="_blank" rel="noopener">
+  <div class="no-img">◆</div>
+  <div class="card-body">
+    <span class="source">WWD</span>
+    
+    <h3>The Best Timeless Beauty at the Oscars Over the Years</h3>
+    <p>From Diana Ross to Pamela Anderson, WWD takes a look at notable looks from Hollywood legends.</p>
+  </div>
+</a>
+</main>
+
+<script>
+function copyPrompt() {
+  const text = document.getElementById('prompt').innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = '📋 Copy Prompt', 2200);
+  });
+}
+</script>
+</body>
+</html>
