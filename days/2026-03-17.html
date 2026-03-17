@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fashion Daily — 2026-03-17</title>
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #080808; --surface: #111; --surface2: #1a1a1a;
+  --accent: #c9a84c; --text: #f0f0f0; --muted: #777; --radius: 12px;
+}
+body { background: var(--bg); color: var(--text); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; min-height: 100vh; }
+header { padding: 24px 32px 20px; border-bottom: 1px solid #1c1c1c; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.logo { font-size: 1.5rem; font-weight: 900; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); }
+.date-badge { font-size: .8rem; color: var(--muted); letter-spacing: .08em; }
+.day-nav { padding: 14px 32px; display: flex; gap: 8px; overflow-x: auto; border-bottom: 1px solid #1c1c1c; scrollbar-width: none; }
+.day-nav::-webkit-scrollbar { display: none; }
+.day-link { white-space: nowrap; padding: 5px 14px; border-radius: 20px; border: 1px solid #2a2a2a; color: var(--muted); text-decoration: none; font-size: .75rem; transition: all .18s; }
+.day-link:hover, .day-link.active { background: var(--accent); color: #000; border-color: var(--accent); font-weight: 700; }
+.tiktok-box { margin: 28px 32px 12px; background: var(--surface); border: 1px solid #222; border-left: 3px solid var(--accent); border-radius: var(--radius); padding: 20px 24px; }
+.tiktok-box h2 { font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+.prompt-text { font-size: .82rem; color: #bbb; line-height: 1.65; white-space: pre-wrap; font-family: 'Courier New', monospace; background: var(--surface2); padding: 14px 16px; border-radius: 8px; margin-bottom: 14px; max-height: 200px; overflow-y: auto; }
+.copy-btn { background: var(--accent); color: #000; border: none; padding: 10px 22px; border-radius: 6px; font-weight: 800; font-size: .8rem; cursor: pointer; letter-spacing: .06em; transition: opacity .2s; }
+.copy-btn:hover { opacity: .82; }
+.stats { padding: 10px 32px 20px; color: var(--muted); font-size: .75rem; letter-spacing: .05em; }
+.stats strong { color: var(--accent); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 18px; padding: 0 32px 64px; }
+.card { background: var(--surface); border-radius: var(--radius); overflow: hidden; text-decoration: none; color: var(--text); border: 1px solid #1a1a1a; transition: transform .2s, border-color .2s; display: flex; flex-direction: column; }
+.card:hover { transform: translateY(-4px); border-color: #2e2e2e; }
+.card-img { width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #141414; }
+.card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s; }
+.card:hover .card-img img { transform: scale(1.05); }
+.no-img { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg,#1a1a1a,#111); display: flex; align-items: center; justify-content: center; color: #2a2a2a; font-size: 2rem; }
+.card-body { padding: 15px 16px 18px; display: flex; flex-direction: column; gap: 7px; flex: 1; }
+.source { font-size: .65rem; text-transform: uppercase; letter-spacing: .14em; color: var(--accent); font-weight: 700; }
+.brand-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.brand-tag { font-size: .62rem; padding: 2px 9px; background: #1e1c10; border: 1px solid #3a3010; border-radius: 20px; color: var(--accent); }
+.card-body h3 { font-size: .9rem; font-weight: 600; line-height: 1.4; }
+.card-body p { font-size: .78rem; color: var(--muted); line-height: 1.55; flex: 1; }
+</style>
+</head>
+<body>
+
+<style>
+#auth-overlay {
+  position:fixed; inset:0; background:#080808; z-index:9999;
+  display:flex; align-items:center; justify-content:center;
+}
+.auth-box {
+  background:#111; border:1px solid #2a2a2a; border-radius:14px;
+  padding:40px 48px; text-align:center; width:320px;
+}
+.auth-box h1 { font-size:1.2rem; letter-spacing:.2em; text-transform:uppercase; color:#c9a84c; margin-bottom:8px; }
+.auth-box p  { color:#555; font-size:.8rem; margin-bottom:28px; }
+.auth-box input {
+  width:100%; padding:12px 16px; background:#1a1a1a; border:1px solid #2a2a2a;
+  border-radius:8px; color:#f0f0f0; font-size:1rem; outline:none;
+  margin-bottom:14px; text-align:center; letter-spacing:.1em;
+}
+.auth-box input:focus { border-color:#c9a84c; }
+.auth-box button {
+  width:100%; padding:12px; background:#c9a84c; color:#000;
+  border:none; border-radius:8px; font-weight:800; font-size:.9rem;
+  cursor:pointer; letter-spacing:.08em;
+}
+.auth-error { color:#e05; font-size:.8rem; margin-top:10px; min-height:18px; }
+</style>
+<div id="auth-overlay">
+  <div class="auth-box">
+    <h1>Fashion Daily</h1>
+    <p>Enter password to continue</p>
+    <input type="password" id="pw-input" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkPw()">
+    <button onclick="checkPw()">Enter</button>
+    <div class="auth-error" id="pw-error"></div>
+  </div>
+</div>
+<script>
+(function() {
+  const HASH = 'ba1e1509304f22d0ce8243a8525d508eb06b1c400c80ef09e9c11ff5a1ad34f4';
+  const KEY  = 'fd_auth';
+  if (localStorage.getItem(KEY) === HASH) {
+    document.getElementById('auth-overlay').remove();
+  }
+  async function sha256(str) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+  }
+  window.checkPw = async function() {
+    const val = document.getElementById('pw-input').value;
+    const h   = await sha256(val);
+    if (h === HASH) {
+      localStorage.setItem(KEY, HASH);
+      document.getElementById('auth-overlay').remove();
+    } else {
+      document.getElementById('pw-error').textContent = 'Wrong password';
+      document.getElementById('pw-input').value = '';
+    }
+  };
+})();
+</script>
+
+<header>
+  <div class="logo">Fashion Daily</div>
+  <div class="date-badge">2026-03-17</div>
+</header>
+
+<nav class="day-nav">
+<a class="day-link active" href="2026-03-17.html">2026-03-17</a>
+<a class="day-link " href="2026-03-16.html">2026-03-16</a>
+<a class="day-link " href="2026-03-15.html">2026-03-15</a>
+<a class="day-link " href="2026-03-14.html">2026-03-14</a>
+<a class="day-link " href="2026-03-13.html">2026-03-13</a>
+<a class="day-link " href="2026-03-12.html">2026-03-12</a>
+<a class="day-link " href="2026-03-11.html">2026-03-11</a>
+</nav>
+
+<div class="tiktok-box">
+  <h2>🎬 TikTok Script Prompt — paste into ChatGPT</h2>
+  <div class="prompt-text" id="prompt">You are a TikTok fashion creator writing a short video script.
+
+Today's date: 2026-03-17
+Today's top mentioned brands: Prada, Chanel, Gucci, Dior
+Today's biggest fashion headlines:
+- Exclusive: Gucci and Guy Oseary’s The Party Was the Last Late-Night Stop for 2026 Oscars Celebrations
+- Rose Byrne Dressed to Get Her Flowers at the 2026 Oscars
+- Anne Hathaway Played The Valentino Couture Diva – And A Fashion Assistant! – At The 2026 Oscars
+- Alysa Liu Wears a Tux With a Twist and a Louis Vuitton Minidress on Oscars Night
+
+Write a 30-second TikTok script (about 80 words):
+- Hook in the FIRST 3 SECONDS (surprising or provocative)
+- Mention 2-3 visual outfit/trend ideas viewers can recreate
+- End with a question or CTA to boost comments
+- Casual Gen-Z tone, fast-paced, no filler words</div>
+  <button class="copy-btn" onclick="copyPrompt()">📋 Copy Prompt</button>
+</div>
+
+<div class="stats">
+  <strong>135</strong> articles today &nbsp;·&nbsp;
+  <strong>14</strong> with brand mentions
+</div>
+
+<main class="grid">
+<a class="card" href="https://www.vogue.com/slideshow/gucci-guy-oseary-the-party-2026-oscars" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b8870fdcd8c9b52b263e32/master/pass/Kim%20Kardashian_3.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    <div class="brand-tags"><span class="brand-tag">Gucci</span></div>
+    <h3>Exclusive: Gucci and Guy Oseary’s The Party Was the Last Late-Night Stop for 2026 Oscars Celebrations</h3>
+    <p>There’s only one venue calling come 2 a.m. on Oscars Sunday: the home of Guy Oseary.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/article/rose-byrne-2026-oscars" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b854b383012d2d538d2ae5/master/pass/2266253492" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    <div class="brand-tags"><span class="brand-tag">Dior</span></div>
+    <h3>Rose Byrne Dressed to Get Her Flowers at the 2026 Oscars</h3>
+    <p>While Rose Byrne has embraced Old Hollywood glamour in recent months, she’s closing out awards season with a bang at the 2026 Oscars in custom Dior by Jonathan Anderson.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/anne-hathaway-oscars-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b7c149363697bea4c6cb61/master/pass/Anne%20Hathaway%20oscar%202026%20look%20valentino%20foto%20GettyImages-2266705754.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    <div class="brand-tags"><span class="brand-tag">Prada</span><span class="brand-tag">Valentino</span></div>
+    <h3>Anne Hathaway Played The Valentino Couture Diva – And A Fashion Assistant! – At The 2026 Oscars</h3>
+    <p>Anne Hathaway and Anna Wintour performed a skit worthy of ‘The Devil Wears Prada 2’ at the 2026 Oscars. Here are all the details of Anne Hathaway’s Oscars 2026 dress.</p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/culture/celebrities/a70746089/alysa-liu-red-carpet-photos-2026-elton-john-oscar-party/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/f2fdc588-1e10-4e9a-81aa-71d268f57237.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    <div class="brand-tags"><span class="brand-tag">Louis Vuitton</span></div>
+    <h3>Alysa Liu Wears a Tux With a Twist and a Louis Vuitton Minidress on Oscars Night</h3>
+    <p></p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/culture/celebrities/a70745824/bella-hadid-prada-2026-vanity-fair-oscars-party-red-carpet-photos/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/7c31064a-f827-4265-bda6-f4283def25e2.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    <div class="brand-tags"><span class="brand-tag">Prada</span></div>
+    <h3>Bella Hadid Is a Vision in Prada at the 2026 <em>Vanity Fair</em> Oscar Party</h3>
+    <p>The model looks absolutely stunning.</p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/culture/celebrities/a70744253/kendall-jenner-photos-vanity-fair-oscar-party-2026/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/ba1268c9-62ee-41af-a15c-3ca0cd30a8db.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    <div class="brand-tags"><span class="brand-tag">Chanel</span></div>
+    <h3>Kendall Jenner Puts a Supermodel Spin on a Cinderella-Blue Chanel Gown at the 2026 <em>Vanity Fair</em> Oscar Party</h3>
+    <p></p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/fashion/a70759072/carolyn-bessette-kennedy-minimalism-red-carpet-oscars-2026-fashion/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/9b6a240f-574a-488d-bb7b-e3488562d73c.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    <div class="brand-tags"><span class="brand-tag">Prada</span><span class="brand-tag">Louis Vuitton</span></div>
+    <h3>The Carolyn Bessette Kennedy Minimalism Craze Hit the Oscars Red Carpet...Kind Of</h3>
+    <p>From Bella Hadid in Prada to Emma Stone in Louis Vuitton, plenty of stars chose streamlined looks last night and made them their own</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/celebrity/latest/a70757147/bella-hadid-two-piece-2026-oscars-after-party-red-carpet-photos/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/f998bbe4-b373-4df3-83c7-a80ef8e96f74.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    <div class="brand-tags"><span class="brand-tag">Off-White</span></div>
+    <h3>Bella Hadid Is the Picture of ’90s Minimalism in a Silky Off-White Two-Piece</h3>
+    <p>She’s practically begging for the CBK comparisons</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/celebrity/latest/a70756521/kendall-jenner-2026-oscars-after-party-red-carpet-photos/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/7ae2f9c6-f4f3-4d4c-96e5-5202ed6d1c1f.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    <div class="brand-tags"><span class="brand-tag">Chanel</span></div>
+    <h3>Kendall Jenner Is a Modern Cinderella at the 2026 Oscars After-Party</h3>
+    <p>In custom Chanel by Matthieu Blazy</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/luxury/best-designer-new-arrivals-spring-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/JJ5maTiJFrX8uwTkQonvJK-1280-80.gif" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    <div class="brand-tags"><span class="brand-tag">Chanel</span><span class="brand-tag">Gucci</span></div>
+    <h3>Spring 2026 Will Go Down in Fashion History—9 Items I'm Itching to Invest In</h3>
+    <p>From Matthieu Blazy–era Chanel pumps to the Demna-fied Gucci Jackie Bag and everything in between.</p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/fashion/article/69884/1/vivienne-westwood-exhibition-political-activism-fashion-news-roundup?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=a-new-vivienne-westwood-exhibition-celebrates-the-designer-s-activism" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/1/1441588.png" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    <div class="brand-tags"><span class="brand-tag">Vivienne Westwood</span></div>
+    <h3>A new Vivienne Westwood exhibition celebrates the designer’s activism</h3>
+    <p>Did you know that 2026 marks 50 years since punk erupted in the UK? Or that the proprietor of punk, the late Vivienne Westwood, is currently being celebrated with a small exhibition in central London? Vivienne Westwood: An Active Life is now open at The Light House, Joe Corré’s f</p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/fashion/article/69903/1/valentino-aw26-fw26-rome-alessandro-michele-paris-fashion-week-pfw?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=rome-is-where-the-heart-is-at-valentino-aw26" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/1/1441589.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    <div class="brand-tags"><span class="brand-tag">Valentino</span></div>
+    <h3>Rome is where the heart is at Valentino AW26</h3>
+    <p>Thought it was all over? You thought wrong! Paris Fashion Week might have finished earlier this week, but the party continued last night in Rome. Yesterday evening (March 12), Valentino took over the Italian capital with its AW26 ready-to-wear show, where creative director Alessa</p>
+  </div>
+</a>
+<a class="card" href="https://wwd.com/fashion-news/fashion-scoops/dior-monsieur-dior-michelin-star-chef-yannick-alleno-1238679916/" target="_blank" rel="noopener">
+  <div class="no-img">◆</div>
+  <div class="card-body">
+    <span class="source">WWD</span>
+    <div class="brand-tags"><span class="brand-tag">Dior</span></div>
+    <h3>Dior Wins First Michelin Star With Chef Yannick Alléno</h3>
+    <p>The French fashion house's Monsieur Dior restaurant in Paris was distinguished in the 2026 edition of the Michelin Guide.</p>
+  </div>
+</a>
+<a class="card" href="https://wwd.com/accessories-news/accessory-trends/top-accessories-fall-2026-fashion-shows-weeks-buyers-verdict-1238679386/" target="_blank" rel="noopener">
+  <div class="no-img">◆</div>
+  <div class="card-body">
+    <span class="source">WWD</span>
+    <div class="brand-tags"><span class="brand-tag">Prada</span><span class="brand-tag">Bottega Veneta</span><span class="brand-tag">Dior</span><span class="brand-tag">Chanel</span><span class="brand-tag">Gucci</span><span class="brand-tag">Fendi</span></div>
+    <h3>Who Delivered the Hottest Accessories of the Season? Buyers Weigh In</h3>
+    <p>Chanel, Dior, Prada, Gucci, Bottega Veneta and Fendi were among the fashion brands showing the hottest fall 2026 shoes, bags and accessories, according to buyers.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/article/oval-engagement-rings-guide" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b93087b6e7807e34a7cd6c/master/pass/GettyImages-2169954621.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>Oval Engagement Rings: What to Know About the Timeless Cut</h3>
+    <p>Oval engagement rings are a classic for a reason. We break down everything to know about the popular cut from its history to setting choices for the stone.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/story/technology/the-vogue-business-ai-tracker" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/687913fa7c80ebe6dfc9d153/master/pass/AItracker-holder-25-story.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>The Vogue Business AI Tracker</h3>
+    <p>Vogue Business brings you a weekly update of the most interesting stories in the world of AI that you need on your radar.Stay tuned as we spotlight AI initiatives in the fashion and beauty industry each week.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/article/transitional-outerwear-celebrity-outfits" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b44c94240e00838958b796/master/pass/holding-03132026_Celeb%20Transitional%20Outerwear.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>Transitional Outerwear Outfits Inspired by Celebs | Vogue</h3>
+    <p>From Zoë Kravitz’s black car coat to Sarah Pidgeon’s leather jacket, shop transitional outerwear outfits inspired by our favorite stylish celebrities.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/article/best-hotels-in-athens" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/66197b968ba852b9bc5ff358/master/pass/Mona_Tristan%20Hollingsworth3.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>The Best Hotels in Athens, From Renovated Historic Villas to Dreamy Bohemian Spots</h3>
+    <p>Vogue rounds up the best hotels in Athens to book, whether you're looking for a beachfront escape, a bohemian parlor, or a design-filled experience.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/slideshow/beach-wedding-guest-dresses" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b81c0c9485c23a3cf5a7f4/master/pass/Beach%20Wedding%20Guest%20Holding.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>29 Beach Wedding Guest Dresses to Wear to Seaside Weddings in 2026</h3>
+    <p>If you’re headed to a seaside ceremony, take your pick from our edit of floaty, festive beach wedding guest dresses.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/article/what-does-it-mean-to-be-a-pr-in-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b8278996a12a70eba4a9c6/master/pass/what-it-means-pr-vogue-business-story.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>What Does It Mean to Be a PR in 2026?</h3>
+    <p>PR is changing. Vogue Business tracked some of the leading PR agencies across New York, London, Milan, and Paris to understand what the job entails today.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/article/how-reviews-became-fashions-most-valuable-marketing-currency" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b811bcfa9bcd3179b24bad/master/pass/03-17-26-REVIEW-ECONOMY-vogue-business-story%20(1).jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>How Fashion Reviews Became the Most Valuable Marketing Currency</h3>
+    <p>From Letterboxd ratings to Reddit threads, reviews are shaping how consumers navigate an increasingly crowded internet. And as AI reshapes discovery, brands are learning that peer recommendation may be their most powerful asset.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/article/clara-khoury-oscars-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b85ea8f635903ed5df2598/master/pass/unnamed.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>Oscars 2026: How ‘Voice of Hind Rajab’ Star Clara Khoury Got Ready for Her Big Night</h3>
+    <p>“Whenever Clara was onscreen, I felt locked into her eyes—which later made me think, I would love to paint on her beautiful face someday,” says makeup artist Katey Denno.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/article/on-the-podcast-vogues-best-dressed-and-biggest-wins-oscars" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b825d76bdad6b712a113d5/master/pass/GettyImages-2266365820.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>On the Podcast: Vogue’s Best Dressed and the Biggest Wins From the 2026 Oscars</h3>
+    <p>After the marathon that is awards season finally came to an end at the 2026 Oscars, the hosts of “The Run-Through” did what they’ve done the last few years, and gathered with colleagues Taylor Antrim and Christian Allaire to discuss their takes.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/article/non-toxic-sunscreens" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/6813ea44ddcafdcbec374c0f/master/pass/PSNC0095copia.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>The Best Nontoxic Sunscreen, According to Dermatologists</h3>
+    <p>The quest for a nontoxic sunscreen generally starts with one question: Is it chemical or physical? Experts explain what you need to know and which formulas to shop.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/article/best-matcha-perfume" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b447d40549631f140d237d/master/pass/03062026_Matcha%20Perfumes%20Holding%20Collage.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>The Best Matcha Perfumes Are Earthy, Delicious, and Totally Complex</h3>
+    <p>A rising note in the fragrance market, matcha lends a distinctive complexity. Ahead, discover some of the best matcha perfumes—from favorites by Phlur, Le Labo, Kayali, and more.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/fashion-shows/pre-fall-2026/alix-higgins" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b7cf6663985536956decd2/master/pass/00001-alix-higgins-pre-fall-2026-credit-brand.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>Alix Higgins Pre-Fall 2026</h3>
+    <p></p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/article/global-fashion-councils-call-on-saks-global-to-pay-independent-designers" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b86c0f623ba34b506392b9/master/pass/GettyImages-94812690%20(1).jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>Global Fashion Councils Call on Saks to Pay Independent Designers</h3>
+    <p>The CFDA, the BFC, the CNMI and the Federation jointly wrote to Saks Global CEO Geoffroy van Raemdonck on March 16, emphasizing the importance of indie designers to the fashion industry.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/article/spring-hairstyle-trend-side-part" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b8511fa5165c8828a142a6/master/pass/2266827597" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>Side Parts Are Back! Here Are 11 Ways to Wear Them, According to the Pros</h3>
+    <p>The top spring hairstyles share one similarity: side parts. Here, experts break down why the divisive style is back and how to wear it.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/slideshow/the-best-street-style-photos-from-the-fall-2026-shows-in-tokyo" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b85aeedcd8c9b52b262ae1/master/pass/TokyoFashionweek_fw26_streetstyle_day1_momoangela_16.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>The Best Street Style Photos From the Fall 2026 Shows in Tokyo</h3>
+    <p>Momo Angela captures the best dressed guests at the fall 2026 shows in Tokyo.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/slideshow/audrey-nuna-2026-oscars" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b7ee8c2f8f2cc9c1e0666e/master/pass/Photo%20Mar%2016%202026,%202%2013%2019%20AM.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>Audrey Nuna Went for Gold(en) at the 2026 Oscars</h3>
+    <p>Audrey Nuna and her “KPop Demon Hunters” bandmates waited for the perfect moment to wear gold—and what could be more perfect than the 2026 Academy Awards?</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/article/fragrance-trends-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69b41484e3b777d4656f67d5/master/pass/holding-03122026_Fragrance%20trends%202026_updated.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>The 5 Fragrance Trends That Will Define 2026</h3>
+    <p>What’s the scoop on 2026 stand out scents? Per the experts, it’s all about layering and reinvention of old favorites.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.com/fashion-shows/fall-2026-ready-to-wear/torisheju" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://assets.vogue.com/photos/69a976d35841b0b569e1e9ae/master/pass/00001-torisheju-fall-2026-ready-to-wear-credit-brand.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue US</span>
+    
+    <h3>Torishéju Fall 2026 Ready-to-Wear</h3>
+    <p></p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/spring-equinox-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/698e08adcf84a8f119d96ec4/master/pass/ED-120226-OP23079_AP_VOGUE_UK_5080_13_CMYK-(1).jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>What To Do – And What Not To Do – During The Spring Equinox</h3>
+    <p>“The expansive energy of the equinox means changes in our relationships, work and inner lives,” writes Vogue’s resident astrologer, Annabel Gat. “This moment presents an opportunity to get grounded before the season sweeps us forward.”</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/a-current-affair-vintage-fair-london" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b8361ed92497383d8bde4e/master/pass/IMG_2219.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>This Cult Vintage Fair Has Landed In London – Here’s What You Need To Know</h3>
+    <p>A treasure trove of archival fashion, A Current Affair vintage fair has landed in the UK. Here's everything you need to know.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/beauty/article/square-nails-inspiration" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b005102897483e5e228b9e/master/pass/%F0%9F%A4%8D%2090s%20squoval%20french%20%F0%9F%A4%8DFor%20@lolabutee%20using%20@biosculptureuki%20and%20@personailityuk%20tools#MicroFre.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>Square Nail Designs Are Back – How to Wear Spring’s Coolest Manicure Trend</h3>
+    <p>Square nail designs are trending. Inspired by the Noughties, manicurists Michelle Humphrey and Julia Diogo share their expert advice on how to make the square tip trend work for you.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/zara-new-in" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b820b0ed9fac5d167639dc/master/pass/zara-new-in-.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>20 New-In Zara Buys To Bookmark This Autumn</h3>
+    <p>Vogue edits the best fashion from Zara’s new-in section, featuring ballet pumps, baggy jeans and more.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/gallery/buffed-red-lips-trend-2026-oscars" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b83148a52b38d4bd9ec84c/master/pass/GettyImages-2266269965.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>Buffed Red Lips Shone Bright At The 2026 Oscars</h3>
+    <p>The 2026 Oscars brought us plenty of beauty inspiration. Best actress winner Jessie Buckley, along with fellow nominees Renate Reinsve and Rose Byrne, just stepped out wearing spring’s hottest beauty trend.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/hm-new-in" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b82480f6e4566ee4fab101/master/pass/H&M-NEW-IN.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>24 New-In Buys From H&M We’re Bookmarking For Spring</h3>
+    <p>For style-savvy shoppers and fashion editors-alike, H&M’s new-in section remains the go-to for winning high-street staples.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/best-tinted-sunscreens" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/6619018c444e8e4d5605d956/master/pass/saie-promo.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>12 Best Tinted Sunscreens 2026 For Glowy, Protected Skin</h3>
+    <p>The best tinted sunscreens provide UV protection and weightless coverage. Shop Vogue's edit of the best tinted sunscreens, that are derm-approved, from EltaMD, Ilia, La Roche-Posay, Saie, and more.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/red-carpet-political-jewellery-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b7f1a970ce597db8b8e10f/master/pass/LH_VOGUEUK_JAVIER-BARDEM-NO-WAR_GETTY-IMAGES.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>The Most Poignant Jewellery At The 2026 Oscars Was Political</h3>
+    <p>Celebrities including Javier Bardem, Mark Ruffalo and Hailey Bieber wore politically motivated jewellery at the 2026 Oscars. Here, British Vogue takes a closer look.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/how-to-shop-for-vintage-clothing" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/671b5a50c60cf5ca391937db/master/pass/1S2A2127a.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>How To Shop For Vintage Clothing, According To The Vogue Editors</h3>
+    <p>Want to know how to shop for vintage clothing? Luckily, the Vogue editors know a thing or two about shopping vintage fashion – read on for their top tips.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/sarah-pidgeon-oscars-after-party-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b8041f576788d309f52409/master/pass/2266734248" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>Sarah Pidgeon Celebrated Her First Oscars In CBK-Coded Calvin Klein Collection</h3>
+    <p>For Vanity Fair’s 2026 Oscar Party, “Love Story” star Sarah Pidgeon sought out a modern day spin on the Carolyn Bessette-Kennedy wardrobe.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/fashion-trends-oscars-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b7f4c470ce597db8b8e2a6/master/pass/GettyImages-2266782372.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>The 6 Biggest Fashion Trends From The Oscars 2026</h3>
+    <p>It was a case of Jessica Rabbit dresses versus Carolyn Bessette Kennedy minimalism at the Oscars 2026. Here are the biggest fashion trends from the Oscars 2026.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/connor-storrie-hudson-williams-oscars-party-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b7dec3924aee1dc0fafb6a/master/pass/2266753166" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>Connor Storrie And Hudson Williams Were Everyone’s Favourite Double Act At The Oscars After-Party</h3>
+    <p>‘Heated Rivalry’ stars Connor Storrie And Hudson Williams reunited with matching outfits at the Vanity Fair Oscars party 2026.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/statuette-fashion-trend-oscars-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b7e838cdf3873662849b94/master/pass/MS_VOGUEUK_GOLD-VF-PARTY_GETTY-IMAGES.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>Going For Gold? Statuette Dressing Was The Brightest Red-Carpet Trend At The 2026 Oscars</h3>
+    <p>From Ejae and Audrey Nuna’s gilded gowns at the 2026 Oscars ceremony to Bella Hadid and Kim Kardashian’s edgy outfits for the 2026 Vanity Fair Oscars party, gold-standard dressing was seen all around.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/gallery/oscars-2026-family-moments" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b7da76ed9fac5d16762bd6/master/pass/GettyImages-2266723638.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>All The Cutest Family Moments At The 2026 Oscars</h3>
+    <p>See all the best family moments from the 2026 Oscars, including Timothée and Pauline Chalamet, Jacob Elordi and his mother, and Teyana Taylor’s secret shoutout to her daughters.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/gallery/low-do-trend-oscars-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b7cff2f9d872c514a1daf4/master/pass/GettyImages-2266768889.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>Forget Big Party Hair, Elegant Low-Dos Were The Biggest Beauty Trend At The Oscars</h3>
+    <p>Pared-back low-dos set the tone on the Oscars red carpet.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/grace-kelly-1956-oscars-dress" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b7dff470ce597db8b8dcc5/master/pass/EC_VOGUEUK_OSCARS-GRACE-V-JESSIE-2026_GETTY-IMAGES-02.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>The Story Behind Grace Kelly’s 1956 Oscars Dress That Inspired Jessie Buckley’s Winning Look</h3>
+    <p>Grace Kelly’s 1956 Oscars dress was designed by American costume designer Edith Head. Read on for more on Grace Kelly’s 1956 Oscars dress.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/priyanka-chopra-jonas-makeup-oscars-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b7d816924aee1dc0faf9ff/master/pass/GettyImages-2266291475.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>Priyanka Chopra Jonas Made Denim Eyeshadow A Thing At The 2026 Oscars</h3>
+    <p>Here’s exactly how celebrity make-up artist Morgane Martini managed to achieve the subtle blue effect.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/gallery/candid-photos-inside-2026-oscars" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b753788334040f56a61f5d/master/pass/GettyImages-2266712268.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>Inside The 2026 Oscars: Go Behind The Scenes With All The Best Candid Moments</h3>
+    <p>Check out photos of all the best air kisses, laughs, hugs, mini-reunions and other real moments from the 2026 Oscars.</p>
+  </div>
+</a>
+<a class="card" href="https://www.vogue.co.uk/article/simone-ashley-2026-oscars-party" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://media.vogue.co.uk/photos/69b7c6ef924aee1dc0faf878/master/pass/2266353101" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Vogue UK</span>
+    
+    <h3>Simone Ashley Opted For A Shimmering One-And-Done Dress For The 2026 Oscars</h3>
+    <p>‘Bridgerton’ star Simone Ashley sported a tinsel-y Tamara Ralph gown for the 2026 Vanity Fair Oscars party.</p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/horoscopes/daily/a108/pisces-daily-horoscope/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/pisces-final-65c5440b949f5.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>Pisces Daily Horoscope</h3>
+    <p>(February 19 - March 20)</p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/beauty/g70761317/best-colognes-for-men-2026/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/mencolognehed-69012a6353ec2.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>The Sensual Colognes Women Secretly Wish Every Man Owns</h3>
+    <p>Step away from the 3-in-1 body wash.</p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/fashion/shopping/a70631287/how-to-style-opera-gloves-outfits/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/96a24bd8-fe8d-4fa9-a356-fcfd571cddfb.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>Opera Gloves Are the Carolyn Bessette Kennedy-Inspired Trend Fashion Loves Again</h3>
+    <p>From everyday occasions to your nuptials, here’s how to style them.</p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/culture/celebrities/a70761612/olivia-rodrigo-pink-oscar-party-dress-album-theory-explained/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/a7501931-d9de-46c2-a792-76fc6ec06a77.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>Why Olivia Rodrigo’s Fans Are Convinced Her Pink Oscar Party Dress Is Teasing Her Next Album</h3>
+    <p></p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/culture/celebrities/a70760925/emma-watson-white-outfit-beyonce-oscar-party-photos-2026/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/c7e97ca9-e965-45f2-8c19-be73c76504d3.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>Emma Watson Makes a Rare Appearance at Beyoncé’s Oscar Party in a Flowy White Look</h3>
+    <p></p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/culture/celebrities/a70744470/why-selena-gomez-benny-blanco-skipped-vanity-fair-oscar-party-2026/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/319609b9-8367-491f-aa54-d4814f40b7ff.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>Why Selena Gomez and Benny Blanco Weren’t at the 2026 <em>Vanity Fair</em> Oscar Party</h3>
+    <p></p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/culture/celebrities/a70744556/why-zendaya-tom-holland-not-at-vanity-fair-oscar-party-2026/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/2574edc1-aefc-4eef-942d-089ce415e2a5.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>Why Zendaya and Tom Holland Weren’t at the 2026 <em>Vanity Fair</em> Oscar Party</h3>
+    <p>The actress made a surprise appearance at the end of the Academy Awards.</p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/culture/celebrities/a70757281/who-is-katelyn-larson-hudson-williams-girlfriend/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/9fa2f6e7-788e-4da3-bfbb-c5c911055975.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>All About Katelyn Larson, Hudson Williams’s Girlfriend</h3>
+    <p></p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/fashion/shopping/a70757411/athleta-friends-family-sale-2026/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/98ec0c61-2005-4ac0-9ea2-7cac80f06992.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>Athleta Just Slashed Prices on Bestselling Workout Gear and Summer Staples</h3>
+    <p>Save on everything from leggings to linen trousers.</p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/culture/movies-tv/a70749509/kpop-demon-hunters-songwriters-speeches-backstage-oscars-press-room/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/1958f1d1-2d09-4b71-bf91-d08451eb3081.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3><em>KPop Demon Hunters </em>Songwriters Continued Their Oscar Speeches Backstage After Getting Cut Off During Telecast</h3>
+    <p></p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/beauty/hair/a70757403/hailey-bieber-bob-hairstylist-interview-oscars-2026/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/2ab3e000-81ab-430c-b692-c051a2a5d0d2.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>Hailey Bieber Has a New Bob to Add to Your Mood Board</h3>
+    <p>It’s ’90s in the best way possible.</p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/culture/celebrities/a70726627/leonardo-dicaprio-vittoria-ceretti-red-carpet-photos-oscars-2026/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/14278c6f-84f7-4e2e-8913-167e28fb31c0.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>Leonardo DiCaprio and Vittoria Ceretti Make Their Oscars Debut as a Couple</h3>
+    <p></p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/culture/celebrities/a70714495/zendaya-dress-photos-oscars-2026/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/f4dc287f-a4d9-4b56-b3a5-6e91f575a2ed.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>Zendaya Makes a Surprise 2026 Oscars Appearance in a Minimalist Asymmetrical Gown</h3>
+    <p></p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/beauty/makeup-skin-care/a70703876/best-nails-hair-makeup-beauty-photos-oscars-2026/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/ccc8d975-54e4-4aed-964b-72bd9ee35967.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>The Most Stunning Hair and Makeup Looks at the 2026 Oscars</h3>
+    <p>And the award for the best bob of the night goes to...</p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/culture/celebrities/a70704483/why-taylor-swift-travis-kelce-not-seen-vanity-fair-oscar-party-2026/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/12cfb155-2e4a-403f-b609-9e5ac5fb505d.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>Why Taylor Swift and Travis Kelce Weren’t Seen at the 2026 <em>Vanity Fair </em>Oscar Party</h3>
+    <p></p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/fashion/celebrity-style/a70748357/barbie-ferreira-gap-dress-2026-oscars/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/0468855a-f900-4c2e-bd5c-d0fd69bd1f5d.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>Barbie Ferreira’s Oscar Gown Was Based on Your Favorite Work Shirt</h3>
+    <p>Twenty-eight years after Gap first hit the Academy Awards red carpet, the humble button-down strikes again.</p>
+  </div>
+</a>
+<a class="card" href="https://www.elle.com/culture/celebrities/a70744317/hailey-bieber-photos-vanity-fair-oscar-party-2026/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/0d581438-9e0d-4e49-9a9d-64a29a6fd0f2.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Elle</span>
+    
+    <h3>Hailey Bieber Hops on the Animal Print Trend With a Bold Strapless Gown at the 2026 <em>Vanity Fair</em> Oscar Party</h3>
+    <p></p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/beauty/skin-care/a70610689/vitamin-c-serum-expired/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/d4bad795-3780-41ea-9b4c-030feeee35c4.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>Ask Jenna: Did My Vitamin C Serum Go Bad?</h3>
+    <p>How to tell if your vitamin C serum is ineffective, straight from a cosmetic chemist</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/fashion/a70761879/oscars-red-carpet-feather-trend-2026-runway-chanel/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/5d13184d-5b69-466c-b7cf-5cdb21e6a423.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>The Oscars Red Carpet Gave Wings to the Feather Trend</h3>
+    <p>Feathers are all over fashion right now, from runways and red carpets</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/culture/film-tv/g70624654/best-spring-tv-shows-2026/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/0305-2026shows-00-69a9c02526f1b.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>The 10 TV Shows We Can't Wait to Watch This Spring</h3>
+    <p>Shows this season aren't afraid to get weird</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/culture/film-tv/g69412490/best-taylor-sheridan-shows/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/1107-biancashows-00-6914d2ec1cec1.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>Every Single Taylor Sheridan TV Show, Ranked</h3>
+    <p>Yes, there’s a show we like even more than Yellowstone</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/beauty/health/a70758280/ozempic-glp-1-weight-loss-silence/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/6a67cf8e-2755-43b4-9f64-87a2053bbfca.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>The Silence Around Ozempic Has Never Been Louder</h3>
+    <p>I started taking a GLP-1 ten months ago. I’m still floored by the ways we are—and aren’t—talking about it.</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/beauty/nails/g70714641/green-nails/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/aec762de-a20f-4d5e-83b1-ddc4c00eee34.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>Matcha Manicures and More Green Nail Ideas for Spring 2026</h3>
+    <p>These fresh, playful looks are sure to bring you a little luck</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/fashion/trends/a70726274/levis-kennedy-dad-jacket-review/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/cecbdb0d-e4dd-45aa-a7cf-cf3f8d3e0eb3.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>I Found the Perfect Leather Bomber (and It's Under $400)</h3>
+    <p>It's from Levi's and it's impossibly soft</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/culture/features/a70696656/women-iran-war/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/ceab779b-3272-4f90-8a6a-5f3868d54509.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>Women Across Iran Face an Uncertain Future. Here Are Some of Their Stories.</h3>
+    <p>Women who participated in the January protests across Iran and witnessed their brutal suppression by the country’s government now face an uncertain future as American and Israeli attacks on the country increase</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/fashion/trends/a70667980/best-mules-for-women/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/d0f06fda-81e9-4c68-accd-9b4f529c56ab.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>The Mule Is Having a Moment. These Are the Best Styles.</h3>
+    <p>From office-ready pairs to statement styles, options to shop for every outfit</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/celebrity/latest/a70758806/sarah-pidgeon-cbk-calvin-klein-dress-2026-oscars-after-party-red-carpet-photos/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/76a6ac8e-c909-4dc0-a7d7-848f0a73317a.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>Sarah Pidgeon Gives a Wink to Carolyn Bessette Kennedy in Her Oscars After-Party Dress</h3>
+    <p>The Love Story star wore, what else, but a Calvin Klein design for the occasion</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/beauty/a70496373/how-maison-francis-kurkdjian-crafted-an-unexpected-timeless-fragrance/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/oud-2025-kv-osam-no-logo-1920x1080-699f23ed20f5a.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>How Maison Francis Kurkdjian Crafted an Unexpected, Timeless Fragrance</h3>
+    <p>OUD satin mood treats scent the way couture treats fabric: as a material that envelops the skin in opulence.</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/celebrity/latest/a70757791/hailey-bieber-leopard-dress-2026-oscars-after-party-red-carpet-photos/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/0e21f361-036e-4731-a288-4fd992ca85d3.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>Hailey Bieber Wears an Iridescent Leopard-Print Dress to the Oscars After-Party</h3>
+    <p>The queen of animal prints is at it again</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/celebrity/latest/a70757587/zendaya-engagement-ring-wedding-band-tom-holland-photos-2026-oscars/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/e84fdc90-52cb-4a16-8266-ec1b191a6991.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>Zendaya Proudly Showed Off Her Engagement Ring and Wedding Band at the 2026 Oscars</h3>
+    <p>She made a surprise appearance on the award show stage</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/celebrity/latest/a62265476/who-is-vittoria-ceretti-leonardo-dicaprio-girlfriend/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/bee93ed2-03b3-4734-8951-dc7b3b3bf02d.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>Who Is Vittoria Ceretti, Leonardo DiCaprio’s Girlfriend?</h3>
+    <p>The Italian model has been dating the actor for over two years</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/celebrity/latest/a70757020/kim-kardashian-blue-contacts-2026-oscars-after-party-red-carpet-photos/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/9ad60ba4-5294-41c2-ac98-f0c4044137cc.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>Kim Kardashian Debuted Striking Blue Contacts at the Oscars After-Party</h3>
+    <p>She was joined by her famous sisters and mom at the starry bash</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/celebrity/latest/a70756767/dua-lipa-two-outfits-callum-turner-oscars-after-party-2026-red-carpet-photos/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/febdb6ac-5b0f-4c1f-a372-294833740bb1.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>Dua Lipa Does Double Duty With Her Outfits on an Oscars Date Night With Callum Turner</h3>
+    <p>From Elton John’s watch party to the official VF bash</p>
+  </div>
+</a>
+<a class="card" href="https://www.harpersbazaar.com/celebrity/red-carpet-dresses/g70749263/best-dressed-red-carpet-photos-vanity-fair-oscars-party-2026/" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://hips.hearstapps.com/hmg-prod/images/37a03a6c-3630-4921-97a7-d04a9a53b96a.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Harper's Bazaar</span>
+    
+    <h3>The Best-Dressed Stars at the <i>Vanity Fair</i> Oscars Party</h3>
+    <p>From Dua Lipa in Schiaparelli to Sarah Pidgeon in Calvin Klein Collection, these were the fashion winners at the biggest after-party of the night</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/celebrity-style/gwyneth-paltrow-capri-leggings-ballet-flat-outfit" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/MTonrWwp39hFHBXUFBYtBT-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>Sorry, Jeans and Trainers—L.A.’s Most Stylish Are Wearing This Flat Shoe Trend With Leggings Instead</h3>
+    <p>Gwyneth Paltrow-approved.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/beauty/hair/dated-hair-trends-spring-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/P5e6V7sjKJ9ScmTErtGWbV-1280-80.gif" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>These Spring Hair Trends Dominated 2025, But They Already Feel "Dated"—11 Swaps You'll See in 2026</h3>
+    <p>Spring is looking good.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/shopping/best-zara-spring-dresses" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/wRYthqq2BgpjUNxDUVJQLD-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>It’s 17°C In London This Week—9 Elegant Zara Dresses I Predict Will Sell Out By Sunday</h3>
+    <p>Spring is springing.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/beauty/makeup/patrick-ta-concealer-review" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/cgoYwFaUBjrac4uGETUfj6-1280-80.gif" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>I Have Dry Skin, But People Can't Stop Complimenting My Fresh Glow Since I Started Using This Concealer</h3>
+    <p>It cuts my routine in half.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/shopping/nordstrom-march-spring-sale-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/7QeAJqU3NVxhpTfAr4DMVJ-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>I'm a Shopping Director, and So Here for the Big Nordstrom Spring Sale—These Are the Fashionable Items You Won't Regret</h3>
+    <p>The Spring Savings Event is here!</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/outfit-ideas/french-minimalist-trends-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/nR5vVkGPQdLRe4wBJtRyuZ-1280-80.png" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>French Women Are Known For Their Minimalist Style—5 Trends They're Backing Now</h3>
+    <p>When in doubt, look to the French.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/trends/trends-making-a-comeback-spring-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/WpgkpZNDNyoYVYbyyFXgzW-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>"Wait, What?" 6 Unexpected Trends You Didn't See Making a Comeback in Spring 2026</h3>
+    <p>From the nostalgic to the new.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/shopping/hm-ballet-flat-try-on-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/986nUPqH7aNjpWU8zCYhZn-1280-80.png" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>I Tried On Every Pair of H&M Ballet Flats in Store —These Three Passed my Test</h3>
+    <p>I've eaten my words.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/shopping/popular-fashionable-zara-items" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/hGmMixDWTUbDfaNzy7A9oe-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>Mark My Words: These 32 Zara New Arrivals Will Sell Out Before April 1</h3>
+    <p>I know a future sellout when I see it.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/shopping/trendy-zara-fashion-spring-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/JSeHueLiRJwB4VWQ6jywbY-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>Fringe! Lace! Stripes! Every Chic Zara Item That Will Make Your Outfits Look On-Trend This Spring</h3>
+    <p>Nothing is over $100.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/beauty/makeup/oscars-red-lipstick" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/2m3j6oDZzYcd5NCi5o64Pa-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>Red Lipstick Ruled the Oscars Red Carpet—Here Are The Exact (Designer) Shades Worn By Each Celeb</h3>
+    <p>They're worth the investment.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/outerwear/spring-outerwear-jacket-trends-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/k3fefGdfTu6BoyXK2rqNtL-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>6 Spring Jacket Trends That Solve Those "Just Bring a Light Jacket" Dilemmas</h3>
+    <p>Cool-girl coded.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/beauty/skin/best-sulwashoo-products" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/D6ukRUzezwNqY8gz9TvYCd-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>This Korean Brand Transformed My Skin in Less Than a Week—5 Products I'd Recommend</h3>
+    <p>It's finally available in the UK.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/spring/viral-spring-2026-items" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/8MdM8LxbSbU3YtJVmJgQ2U-1280-80.png" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>Count On It: These 16 Spring It Items Will Sell Out by April 1</h3>
+    <p>Consider this your warning.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/beauty/hair/lazy-bob-hair-trend" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/tcTRicn83uV6rmquVCSqYd-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>The Lazy Bob Is the Coolest Low-Maintenance Cut for Spring</h3>
+    <p>Effortlessly chic.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/trends/spring/paloma-wool-runway-inspiration-spring-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/3GVakTrXXJr2NvGGoUV85o-1280-80.gif" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>The Cool Spanish Brand Inspiring My Entire Spring Wardrobe</h3>
+    <p>Spring trendspotting from Paloma Wool’s S/S 26 runway.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/shoes/v-neck-shoes-spring-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/ggvDSSZkxPM5kC7HhmL5EX-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>All the Chicest Women I Know Are Wearing V-Neck Shoes Right Now—20 Worth Adding to Your New-Season Wardrobe</h3>
+    <p>Fashion girls can't get enough of the silhouette.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/shopping/trending-jcrew-fashion-items-spring-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/evFheQFXoeEk43vYSvQodU-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>31 J.Crew Items Dominating My Algorithm (and Thoughts) This Spring</h3>
+    <p>Good luck trying not to resist them.</p>
+  </div>
+</a>
+<a class="card" href="https://www.whowhatwear.com/fashion/handbags/celebrities-wearing-coach-brooklyn-bag" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://cdn.mos.cms.futurecdn.net/6d9Zzh4897UXZS6xMDZyfM-1280-80.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Who What Wear</span>
+    
+    <h3>I’ll Always Love Designer Bags, But This More Affordable, Celebrity-Endorsed Style Has All My Attention</h3>
+    <p>Next on my wish list.</p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/fashion/article/69914/1/harry-styles-queerbaiting-fashion-discourse-snl-chanel-dior?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=harry-styles-and-the-curse-of-the-queerbait-wardrobe" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/1/1441748.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    
+    <h3>Harry Styles and the curse of the queerbait wardrobe</h3>
+    <p>Dutifully fulfilling the role of ‘famous person who just had an album out’, Harry Styles was on Saturday Night Live at the weekend. While pulling double duty – both hosting the show and performing tracks from his new album Kiss All the Time. Disco, Occasionally – Styles’ opening </p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/film-tv/article/69918/1/timothee-chalamet-oscars-fans-backlash-criticism-marty-supreme-press-tour?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=why-fans-are-turning-against-timothee-chalamet" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/1/1441743.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    
+    <h3>Why fans are turning against Timothée Chalamet</h3>
+    <p>Timothée Chalamet failed to win at the Oscars last night, despite running an energetic, expensive and arguably quite innovative campaign (and, it must be said, being incredibly good in Marty Supreme.)  In a shocking twist, the Academy voters (average age 63) failed to be gooped a</p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/music/article/69902/1/wu-tang-clan-rza-interview-final-chamber-tour-farewell-2026?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=there-s-been-tears-rza-on-the-final-days-of-wu-tang-clan" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/1/1441687.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    
+    <h3>‘There’s been tears’: RZA on the final days of Wu-Tang Clan</h3>
+    <p>For more than three decades, Wu-Tang Clan have existed somewhere between a rap group and a mythology. What began on Staten Island in the early 1990s – nine MCs, kung-fu films, dusty soul samples and a radically new approach to hip hop – grew into one of the most influential colle</p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/music/article/69905/1/beabadoobee-dazed-spring-2026-cover-signing-magculture?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=what-went-down-at-the-beabadoobee-dazed-cover-signing" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/1/1441688.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    
+    <h3>What went down at the beabadoobee Dazed cover signing</h3>
+    <p>Last Thursday (March 12), hundreds of young people with brightly coloured hair queued (and skipped school) to meet Dazed cover star beabadoobee and get her to sign a copy of our new Spring 2026 issue at magCulture in London. “I travelled all the way here from Scotland”, one beaba</p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/art-photography/article/69913/1/dana-lixenberg-american-images-mep-paris-exhibiiton-tupac-trump-lil-kim?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=these-portraits-interrogate-the-power-of-celebrity-in-america" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/1/1441674.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    
+    <h3>These portraits interrogate the power of celebrity in America</h3>
+    <p>America is flawed – that’s no secret. Yet, what photographer Dana Lixenberg’s candid body of work reveals is that we cannot fully distance ourselves from its complexities. The contradictions and truths we treat as new revelations have long been embedded in US culture. From her in</p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/life-culture/article/69882/1/month-offline-smartphone-support-group-unplugging-flip-offline-detox?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=would-you-try-the-30-day-flip-phone-challenge" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/1/1441382.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    
+    <h3>Would you try the 30-day flip phone challenge?</h3>
+    <p>By the time 28-year-old Grant Besner met Danny Hogenkamp, his future Month Offline co-founder, at a Shabbat in Washington, DC, he had already lived many lives. There was his semester spent at a religious seminary in Jerusalem, where the then-computer science major moved after tak</p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/fashion/article/69912/1/oscars-2026-the-best-dressed-stars-on-the-red-carpet?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=oscars-2026-the-best-dressed-stars-on-the-red-carpet" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/1/1441663.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    
+    <h3>Oscars 2026: The best dressed stars on the red carpet</h3>
+    <p>The Academy Awards are back on our screens tonight, which means the public (and extremely online) debate on who was best dressed is already well underway, after the stars of the biggest movies of the year walked into the Dolby Theatre in Los Angeles. The red carpet is to fashion </p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/fashion/article/69910/1/oscars-2026-red-carpet-most-controversial-outfits-worst-dressed?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=oscars-red-carpet-the-17-most-controversial-outfits-of-all-time" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/1/1441602.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    
+    <h3>Oscars red carpet: The 17 most controversial outfits of all time</h3>
+    <p>It’s that time of year again. This weekend, the Academy Awards is back for its 98th edition, and with another Oscars ceremony comes yet more red carpet fashion. While we wait to see what today’s stars churn out, awards season also gets us thinking about those red carpet looks tha</p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/film-tv/article/69904/1/oscars-2026-nominations-snubs-gwyneth-paltrow-jennifer-lawrence?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=oscars-2026-the-biggest-snubs-from-this-year-s-nominations" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/1/1441590.jpeg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    
+    <h3>Oscars 2026: The biggest snubs from this year’s nominations</h3>
+    <p>What is awards season without a bit of drama? Last year, it came from all angles: there was the revelation of Emilia Pérez’s star, Karla Sofía Gascón’s racist and sexist social media posts, the use of generative AI in The Brutalist and the controversy around Sean Baker not using </p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/life-culture/article/69908/1/inside-the-manosphere-the-rise-of-conservative-non-monogamy-louis-theroux?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=the-manosphere-is-rewriting-the-rules-of-non-monogamy" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/1/1441592.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    
+    <h3>The Manosphere is rewriting the rules of non-monogamy</h3>
+    <p>The rise of non-monogamy has been a highly discussed topic over the last decade. It’s generally been coded as a left/liberal phenomenon – a groovy alternative lifestyle associated with Portland polycules, self-described “kinksters”, people with dyed green hair and septum piercing</p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/film-tv/article/69907/1/2026-oscar-best-casting-is-wildly-overdue-heres-why?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=casting-is-finally-getting-its-flowers-at-the-2026-oscars" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/1/1441591.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    
+    <h3>Casting is finally getting its flowers at the 2026 Oscars</h3>
+    <p>Everyone, it seems, has an opinion on casting. Whether it’s that Dev Patel should have played Heathcliff in Emerald Fennell’s Wuthering Heights, or that the casting in Marty Supreme was nothing short of genius, the internet has made casting in cinema a hot topic. Ofhellip;read mo</p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/beauty/gallery/36840/0/the-best-vintage-beauty-looks-at-the-oscars?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=13-of-the-best-ever-vintage-oscars-beauty-looks" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/1/1441587.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    
+    <h3>13 of the best ever vintage Oscars beauty looks</h3>
+    <p>nbsp;nbsp;nbsp;nbsp;nbsp;nbsp;View Gallery (14 images)nbsp;</p>
+  </div>
+</a>
+<a class="card" href="https://www.dazeddigital.com/art-photography/article/69901/1/what-to-look-out-for-at-art-basel-hong-kong-2026-highlights-angelle-siyang-le?utm_source=Link&utm_medium=Link&utm_campaign=RSSFeed&utm_term=what-to-look-out-for-at-art-basel-hong-kong-2026" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://images-prod.dazeddigital.com/786/azure/dazed-prod/1440/1/1441525.jpg" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Dazed</span>
+    
+    <h3>What to look out for at Art Basel Hong Kong 2026</h3>
+    <p>Art Basel Hong Kong 2026 is just around the corner, promising to touch down with a wave of fresh ideas and opportunities for cultural exchange. From artists at the height of their careers, to emerging talents working with the latest technologies, no less than 41 countries and ter</p>
+  </div>
+</a>
+<a class="card" href="https://www.refinery29.com/en-us/aries-season-horoscope-march-2026-meanings-effects?utm_source=feed&utm_medium=rss" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://www.refinery29.com/images/11965871.jpg?width=853&height=1024&fit=bounds&crop=853%3A1024" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Refinery29</span>
+    
+    <h3>Aries Season Is Here — & It’s Time To Let Go Of Your Hibernation Era</h3>
+    <p>It’s time to wake up and get out of hibernation! March 20th kicks off Aries season, as well as the Spring Equinox and astrological new year. Aries is the first sign of the zodiac, so it pushes us to be brave in the month ahead. We all want to lead and take charge, which is why ou</p>
+  </div>
+</a>
+<a class="card" href="https://www.refinery29.com/en-us/vanity-fair-red-carpet-fashion-2026?utm_source=feed&utm_medium=rss" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://www.refinery29.com/images/11965898.jpg?auto=webp&width=2400&height=3600&quality=85&crop=2:3" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Refinery29</span>
+    
+    <h3>The Vanity Fair Oscars Party Served Up The Best Red Carpet Looks</h3>
+    <p>Oscars night brought tons of historical wins for Sinners and KPop Demon Hunters, and the celebrations didn't end when the award show finished. Immediately after, celebrities hopped over to the annual Vanity Fair Oscars party to cheers and mingle with their fellow nominees, winner</p>
+  </div>
+</a>
+<a class="card" href="https://www.refinery29.com/en-us/relationship-break-up-red-pill-manosphere?utm_source=feed&utm_medium=rss" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://www.refinery29.com/images/11889060.jpg?width=853&height=1024&fit=bounds&crop=853%3A1024" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Refinery29</span>
+    
+    <h3>4 Women On How ‘Red-Pill’ Content Destroyed Their Relationships</h3>
+    <p>Kelsey, age 28, had a long-standing crush on Peter* when they were at high school together, but she’d never thought he’d be interested in her romantically. “He seemed too cool,” she says. So, when he started DMing her over Instagram a few years after they graduated, eventually as</p>
+  </div>
+</a>
+<a class="card" href="https://www.refinery29.com/en-us/2026/03/11965808/sinners-oscars-wins-best-picture-snub?utm_source=feed&utm_medium=rss" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://www.refinery29.com/images/11965815.jpg?width=795&height=1024&fit=bounds&crop=795%3A1024" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Refinery29</span>
+    
+    <h3>Sinners’ Oscars Wins Are Historic. The Film Also Doesn’t Need Awards For Validation</h3>
+    <p>US film director, producer Ryan Coogler accepts the award for Best Writing (Original Screenplay) for “Sinners” onstage during the 98th Annual Academy Awards at the Dolby Theatre in Hollywood, California on March 15, 2026. (Photo by Patrick T. Fallon / AFP)
+
+
+
+Sinners capped off a</p>
+  </div>
+</a>
+<a class="card" href="https://www.refinery29.com/en-us/2026/03/11965787/kpop-demon-hunters-oscars-golden-best-song?utm_source=feed&utm_medium=rss" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://www.refinery29.com/images/11965797.jpg?width=796&height=1024&fit=bounds&crop=199%3A256" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Refinery29</span>
+    
+    <h3>KPop Demon Hunters Made History At The Oscars. Why Didn’t The Show Let Them Celebrate Properly?</h3>
+    <p>HOLLYWOOD, CALIFORNIA – MARCH 15: (L-R) Yuhan, EJAE, ZHUN, Mark Sonnenblick, NHD and 24 accept the Original Song award for “KPop Demon Hunters” onstage during the 98th Oscars at Dolby Theatre on March 15, 2026 in Hollywood, California. (Photo by Kevin Winter/Getty Images)
+
+
+
+Chan</p>
+  </div>
+</a>
+<a class="card" href="https://www.refinery29.com/en-us/oscars-red-carpet-fashion-2026?utm_source=feed&utm_medium=rss" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://www.refinery29.com/images/11965654.jpg?auto=webp&width=2001&height=3000&quality=85&crop=667:1000" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Refinery29</span>
+    
+    <h3>Our Favorite 2026 Oscars Red Carpet Looks Of The Night</h3>
+    <p>The pinnacle of awards season — the Oscars — is here, but the celebrities had to step out on the red carpet to start celebrating the evening first.  The 98th Academy Awards promises to bring tons of exciting performances, shocking (and not-so-shocking) wins, moving acceptance spe</p>
+  </div>
+</a>
+<a class="card" href="https://www.refinery29.com/en-us/weekly-horoscopes-march-15-to-21-meaning-effects?utm_source=feed&utm_medium=rss" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://www.refinery29.com/images/11960008.jpg?width=853&height=1024&fit=bounds&crop=853%3A1024" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Refinery29</span>
+    
+    <h3>Your Horoscope This Week: March 15 To 21</h3>
+    <p>R29 babes, the beginning of this week carries the quiet, reflective energy of the dark of the moon in Pisces, the final phase before the lunar cycle renews itself. The dark moon is often when emotions feel a little heavier, insecurities surface, and unfinished emotional business </p>
+  </div>
+</a>
+<a class="card" href="https://www.refinery29.com/en-us/new-moon-in-pisces-horoscope-march-2026-meaning-effects?utm_source=feed&utm_medium=rss" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://www.refinery29.com/images/11965026.jpg?width=1024&height=683&fit=bounds&crop=1024%3A683" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Refinery29</span>
+    
+    <h3>The New Moon In Pisces Is Here — & You Need To Pay Close Attention To Signs</h3>
+    <p>This is a clear picture of the moon taken with a long zoom lens with the milky way in the background
+
+
+
+The last New Moon of winter occurs on March 18th, two days before spring officially begins! What will it mean for you? The New Moon in Pisces ushers in a unique way of feeling,</p>
+  </div>
+</a>
+<a class="card" href="https://www.refinery29.com/en-us/2026/03/11965539/essence-black-women-in-hollywood-awards-speeches-recap?utm_source=feed&utm_medium=rss" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://www.refinery29.com/images/11965546.jpg?width=819&height=1024&fit=bounds&crop=819%3A1024" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Refinery29</span>
+    
+    <h3>“There’s Space For All Of Us.” Inside The Essence Black Women In Hollywood Ceremony</h3>
+    <p>An unapologetic presence and collective power filled the room at the annual Essence Black Women in Hollywood Awards. On March 12, Black Hollywood gathered in the heart of Los Angeles at the Fairmont Century Plaza hotel for an afternoon of celebration and love for the women shapin</p>
+  </div>
+</a>
+<a class="card" href="https://www.refinery29.com/en-us/best-zara-new-arrivals?utm_source=feed&utm_medium=rss" target="_blank" rel="noopener">
+  <div class="card-img"><img src="https://www.refinery29.com/images/11965397.png?width=853&height=1024&fit=bounds&crop=853%3A1024" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=no-img>◆</div>'"></div>
+  <div class="card-body">
+    <span class="source">Refinery29</span>
+    
+    <h3>Zara’s New Spring Drop Is Filled With Luxurious-Looking Gems</h3>
+    <p>Zara’s latest arrivals are a reminder that spring is nearly here — and your wardrobe should start acting like it. The new collection is packed with pieces designed to make the most of the current transitional weather and approaching celebrations, from spring weddings and getaways</p>
+  </div>
+</a>
+<a class="card" href="https://wwd.com/beauty-industry-news/hair/beyonce-knowles-carter-tour-hair-cecred-styling-products-1238678921/" target="_blank" rel="noopener">
+  <div class="no-img">◆</div>
+  <div class="card-body">
+    <span class="source">WWD</span>
+    
+    <h3>EXCLUSIVE: Beyoncé Knowles-Carter on Tour Hair, Cécred’s New Styling Products</h3>
+    <p>"I wasn't finding stylers that could perform at the necessary level without affecting my hair health," Knowles-Carter, who tested the products during her 2025 Cowboy Carter Tour, told WWD.</p>
+  </div>
+</a>
+<a class="card" href="https://wwd.com/beauty-industry-news/skin-care/aveeno-mayo-clinic-partnership-1238674248/" target="_blank" rel="noopener">
+  <div class="no-img">◆</div>
+  <div class="card-body">
+    <span class="source">WWD</span>
+    
+    <h3>Aveeno Partners With Mayo Clinic</h3>
+    <p>The partnership will go toward pre-clinical and clinical research into the brand's proprietary Triple Oat complex.</p>
+  </div>
+</a>
+<a class="card" href="https://wwd.com/beauty-industry-news/beauty-features/cardi-b-grow-good-haircare-line-revolve-1238675012/" target="_blank" rel="noopener">
+  <div class="no-img">◆</div>
+  <div class="card-body">
+    <span class="source">WWD</span>
+    
+    <h3>EXCLUSIVE: Cardi B Reveals Grow-Good Beauty</h3>
+    <p>A first look at the products, packaging and inspiration behind Cardi B's new hair care brand developed with Revolve Group.</p>
+  </div>
+</a>
+<a class="card" href="https://wwd.com/fashion-news/fashion-scoops/ralph-lauren-sports-spring-campaign-1238678951/" target="_blank" rel="noopener">
+  <div class="no-img">◆</div>
+  <div class="card-body">
+    <span class="source">WWD</span>
+    
+    <h3>Ralph Lauren Leans Into Sports for Spring Campaign</h3>
+    <p>Motorsports, polo and boating are among the sports celebrated in the new ads.</p>
+  </div>
+</a>
+<a class="card" href="https://wwd.com/beauty-industry-news/beauty-features/evereden-enters-us-sephora-stores-1238679191/" target="_blank" rel="noopener">
+  <div class="no-img">◆</div>
+  <div class="card-body">
+    <span class="source">WWD</span>
+    
+    <h3>Evereden Enters U.S. Sephora Stores</h3>
+    <p>The brand debuts with 12 stock keeping units across skin care, hair care, fragrance and sun care, marking its first U.S. retailer partnership.</p>
+  </div>
+</a>
+<a class="card" href="https://wwd.com/beauty-industry-news/hair/bumble-and-bumble-close-midtown-east-salon-june-27-1238679591/" target="_blank" rel="noopener">
+  <div class="no-img">◆</div>
+  <div class="card-body">
+    <span class="source">WWD</span>
+    
+    <h3>Bumble and bumble to Close Iconic Midtown East Salon on June 27</h3>
+    <p>Its location in New York's Meatpacking neighborhood will remain open.</p>
+  </div>
+</a>
+<a class="card" href="https://wwd.com/voices/beauty-tomorrow/iskra-lawrence-saltair-podcast-episode-1238672869/" target="_blank" rel="noopener">
+  <div class="no-img">◆</div>
+  <div class="card-body">
+    <span class="source">WWD</span>
+    
+    <h3>Inside Iskra Lawrence’s Therapeutic Take on Body Care</h3>
+    <p>The model-turned-founder detailed how healing her mental health inspired Saltair, which is nearing $100 million in revenue.</p>
+  </div>
+</a>
+<a class="card" href="https://wwd.com/beauty-industry-news/beauty-features/buzziest-skin-care-brands-online-europe-creatoriq-k-beauty-1238674250/" target="_blank" rel="noopener">
+  <div class="no-img">◆</div>
+  <div class="card-body">
+    <span class="source">WWD</span>
+    
+    <h3>Buzziest Skin Care Brands Online in Europe</h3>
+    <p>Erborian, Garnier and La Roche-Posay topped CreatorIQ’s ranking for February.</p>
+  </div>
+</a>
+</main>
+
+<script>
+function copyPrompt() {
+  const text = document.getElementById('prompt').innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = '📋 Copy Prompt', 2200);
+  });
+}
+</script>
+</body>
+</html>
