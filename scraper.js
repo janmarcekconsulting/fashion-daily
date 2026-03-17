@@ -10,14 +10,35 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // ─── Configuration ─────────────────────────────────────────────────────────────
 
 const RSS_FEEDS = {
-  'Vogue US':        'https://www.vogue.com/feed/rss',
-  'Vogue UK':        'https://www.vogue.co.uk/feed/rss',
-  'Elle':            'https://www.elle.com/rss/all.xml',
-  "Harper's Bazaar": 'https://www.harpersbazaar.com/rss/all.xml',
-  'WWD':             'https://wwd.com/feed/',
-  'Who What Wear':   'https://www.whowhatwear.com/rss',
-  'Dazed':           'https://www.dazeddigital.com/rss',
-  'Refinery29':      'https://www.refinery29.com/rss.xml',
+  VIRAL: {
+    'Vogue US':        'https://www.vogue.com/feed/rss',
+    'Vogue UK':        'https://www.vogue.co.uk/feed/rss',
+    'Elle':            'https://www.elle.com/rss/all.xml',
+    "Harper's Bazaar": 'https://www.harpersbazaar.com/rss/all.xml',
+    'WWD':             'https://wwd.com/feed/',
+    'Who What Wear':   'https://www.whowhatwear.com/rss',
+    'Dazed':           'https://www.dazeddigital.com/rss',
+    'Refinery29':      'https://www.refinery29.com/rss.xml',
+  },
+  ALTERNATIVE: {
+    'Highsnobiety':        'https://highsnobiety.com/feed',
+    'Sleek Magazine':      'https://www.sleek-mag.com/feed',
+    'Business of Fashion': 'https://www.businessoffashion.com/feed',
+  },
+  GOTH: {
+    'Gothic Beauty': 'https://www.gothicbeauty.com/feed',
+    'La Carmina':    'https://lacarmina.com/blog/feed',
+  },
+  Y2K: {
+    'Y2K Zone':   'https://y2kzone.com/blogs/y2k.atom',
+    'Y2K Fusion': 'https://y2kfusion.com/blogs/y2k-blog.atom',
+  },
+  COTTAGECORE: {
+    'The Cottagecore Life': 'https://thecottagecorelife.com/feed',
+  },
+  'DARK ACADEMIA': {
+    'My Cottagecore': 'https://mycottagecore.com/feed',
+  },
 };
 
 const BRANDS = [
@@ -98,32 +119,35 @@ async function scrape() {
 
   const articles = [];
 
-  for (const [source, feedUrl] of Object.entries(RSS_FEEDS)) {
-    process.stdout.write(`  → ${source} ... `);
-    try {
-      const feed = await parser.parseURL(feedUrl);
-      let count = 0;
+  for (const [category, feeds] of Object.entries(RSS_FEEDS)) {
+    console.log(`\n[${category}]`);
+    for (const [source, feedUrl] of Object.entries(feeds)) {
+      process.stdout.write(`  → ${source} ... `);
+      try {
+        const feed = await parser.parseURL(feedUrl);
+        let count = 0;
 
-      for (const item of feed.items.slice(0, 20)) {
-        const title = item.title?.trim() ?? '';
-        const link  = item.link ?? '';
-        const desc  = stripHtml(item.content || item.contentSnippet || item.summary || '').slice(0, 280);
-        const image = getImage(item);
+        for (const item of feed.items.slice(0, 20)) {
+          const title = item.title?.trim() ?? '';
+          const link  = item.link ?? '';
+          const desc  = stripHtml(item.content || item.contentSnippet || item.summary || '').slice(0, 280);
+          const image = getImage(item);
 
-        // Brand check on title + RSS description only (fast, no extra requests)
-        const brands = findBrands(title + ' ' + desc);
+          const brands = findBrands(title + ' ' + desc);
 
-        articles.push({ source, title, desc, link, image, brands });
-        count++;
+          articles.push({ category, source, title, desc, link, image, brands });
+          count++;
+        }
+        console.log(`${count} articles`);
+      } catch (e) {
+        console.log(`✗ ${e.message}`);
       }
-      console.log(`${count} articles`);
-    } catch (e) {
-      console.log(`✗ ${e.message}`);
     }
   }
 
-  // Brand articles first, then articles with images
+  // Within each category: brand articles first, then articles with images
   articles.sort((a, b) => {
+    if (a.category !== b.category) return 0; // keep category grouping intact
     const aScore = (a.brands.length ? 0 : 2) + (a.image ? 0 : 1);
     const bScore = (b.brands.length ? 0 : 2) + (b.image ? 0 : 1);
     return aScore - bScore;
@@ -138,7 +162,9 @@ function buildTikTokPrompt(articles, dateStr) {
   const brandCounts = {};
   const headlines = [];
 
-  for (const a of articles.slice(0, 40)) {
+  const viralArticles = articles.filter(a => a.category === 'VIRAL');
+
+  for (const a of viralArticles.slice(0, 40)) {
     for (const b of a.brands) brandCounts[b] = (brandCounts[b] ?? 0) + 1;
     if (headlines.length < 4) headlines.push(a.title);
   }
@@ -188,7 +214,12 @@ header { padding: 24px 32px 20px; border-bottom: 1px solid #1c1c1c; display: fle
 .copy-btn:hover { opacity: .82; }
 .stats { padding: 10px 32px 20px; color: var(--muted); font-size: .75rem; letter-spacing: .05em; }
 .stats strong { color: var(--accent); }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 18px; padding: 0 32px 64px; }
+.section { padding: 0 32px 48px; }
+.section-header { display: flex; align-items: center; gap: 14px; padding: 28px 0 18px; }
+.section-title { font-size: .72rem; font-weight: 900; letter-spacing: .22em; text-transform: uppercase; color: var(--accent); }
+.section-line { flex: 1; height: 1px; background: #1e1e1e; }
+.section-count { font-size: .68rem; color: var(--muted); letter-spacing: .06em; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 18px; }
 .card { background: var(--surface); border-radius: var(--radius); overflow: hidden; text-decoration: none; color: var(--text); border: 1px solid #1a1a1a; transition: transform .2s, border-color .2s; display: flex; flex-direction: column; }
 .card:hover { transform: translateY(-4px); border-color: #2e2e2e; }
 .card-img { width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #141414; }
@@ -223,8 +254,41 @@ function cardHtml(a) {
 </a>`;
 }
 
+const CATEGORY_EMOJI = {
+  'VIRAL':         '🔥',
+  'ALTERNATIVE':   '⚡',
+  'GOTH':          '🖤',
+  'Y2K':           '💿',
+  'COTTAGECORE':   '🌿',
+  'DARK ACADEMIA': '📚',
+};
+
 function generateHtml(articles, dateStr, allDays, prompt, passwordHash) {
-  const cards = articles.map(cardHtml).join('\n');
+  // Group articles by category, preserving RSS_FEEDS order
+  const categoryOrder = Object.keys(RSS_FEEDS);
+  const grouped = {};
+  for (const cat of categoryOrder) grouped[cat] = [];
+  for (const a of articles) {
+    if (grouped[a.category]) grouped[a.category].push(a);
+  }
+
+  const sections = categoryOrder.map(cat => {
+    const catArticles = grouped[cat];
+    if (!catArticles.length) return '';
+    const emoji = CATEGORY_EMOJI[cat] || '';
+    const cards = catArticles.map(cardHtml).join('\n');
+    return `<section class="section">
+  <div class="section-header">
+    <span class="section-title">${emoji} ${cat}</span>
+    <div class="section-line"></div>
+    <span class="section-count">${catArticles.length} articles</span>
+  </div>
+  <div class="grid">
+${cards}
+  </div>
+</section>`;
+  }).join('\n');
+
   const brandCount = articles.filter(a => a.brands.length).length;
 
   const dayLinks = allDays.map(d =>
@@ -323,8 +387,8 @@ ${dayLinks}
   <strong>${brandCount}</strong> with brand mentions
 </div>
 
-<main class="grid">
-${cards}
+<main>
+${sections}
 </main>
 
 <script>
