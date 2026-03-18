@@ -10,38 +10,104 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // ─── Configuration ─────────────────────────────────────────────────────────────
 
 const RSS_FEEDS = {
-  VIRAL: {
-    'Vogue US':        'https://www.vogue.com/feed/rss',
-    'Vogue UK':        'https://www.vogue.co.uk/feed/rss',
-    'Elle':            'https://www.elle.com/rss/all.xml',
-    "Harper's Bazaar": 'https://www.harpersbazaar.com/rss/all.xml',
-    'WWD':             'https://wwd.com/feed/',
-    'Who What Wear':   'https://www.whowhatwear.com/rss',
-    'Dazed':           'https://www.dazeddigital.com/rss',
-    'Refinery29':      'https://www.refinery29.com/rss.xml',
+  'VIRAL': {
+    'Vogue US':          'https://www.vogue.com/feed/rss',
+    'Vogue UK':          'https://www.vogue.co.uk/feed/rss',
+    'Elle':              'https://www.elle.com/rss/all.xml',
+    "Harper's Bazaar":   'https://www.harpersbazaar.com/rss/all.xml',
+    'WWD':               'https://wwd.com/feed/',
+    'Who What Wear':     'https://www.whowhatwear.com/rss',
+    'PopSugar Fashion':  'https://www.popsugar.com/fashion/feed',
   },
-  ALTERNATIVE: {
-    'Highsnobiety':        'https://highsnobiety.com/feed',
-    'Sleek Magazine':      'https://www.sleek-mag.com/feed',
+  'STREETWEAR': {
+    'Hypebeast':         'https://hypebeast.com/feed',
+    'Highsnobiety':      'https://www.highsnobiety.com/feed/',
+    'Dazed':             'https://www.dazeddigital.com/rss',
+    'Sleek Magazine':    'https://www.sleek-mag.com/feed',
+  },
+  'GOTH': {
+    'Gothic Beauty':     'https://www.gothicbeauty.com/feed',
+    'La Carmina':        'https://lacarmina.com/blog/feed',
+    'Fashionista Dark':  'https://fashionista.com/feed',
+  },
+  'Y2K': {
+    'Y2K Zone':          'https://y2kzone.com/blogs/y2k.atom',
+    'Y2K Fusion':        'https://y2kfusion.com/blogs/y2k-blog.atom',
+    'Teen Vogue':        'https://www.teenvogue.com/feed/rss',
+    'Refinery29':        'https://www.refinery29.com/rss.xml',
+  },
+  'KAWAII': {
+    'Tokyo Fashion':     'https://tokyofashion.com/feed/',
+    'Tokyo Otaku Mode':  'https://otakumode.com/rss/pickup',
+    'Japan Info':        'https://japaninfo.jp/feed',
+  },
+  'COQUETTE': {
+    'Glamour':           'https://www.glamour.com/feed/rss',
+    'Cosmopolitan':      'https://www.cosmopolitan.com/rss/all.xml',
+    'Marie Claire':      'https://www.marieclaire.com/rss/all.xml',
+  },
+  'OLD MONEY': {
+    'Esquire':           'https://www.esquire.com/rss/all.xml',
+    'GQ':                'https://www.gq.com/feed/rss',
     'Business of Fashion': 'https://www.businessoffashion.com/feed',
+    'The Guardian Fashion': 'https://www.theguardian.com/fashion/rss',
   },
-  GOTH: {
-    'Gothic Beauty': 'https://www.gothicbeauty.com/feed',
-    'La Carmina':    'https://lacarmina.com/blog/feed',
+  'TECHWEAR': {
+    'WIRED':             'https://www.wired.com/feed/rss',
+    'Dezeen':            'https://www.dezeen.com/feed/',
+    'Highsnobiety':      'https://www.highsnobiety.com/feed/',
   },
-  Y2K: {
-    'Y2K Zone':   'https://y2kzone.com/blogs/y2k.atom',
-    'Y2K Fusion': 'https://y2kfusion.com/blogs/y2k-blog.atom',
-  },
-  COTTAGECORE: {
+  'COTTAGECORE': {
     'The Cottagecore Life': 'https://thecottagecorelife.com/feed',
+    'Wit & Delight':     'https://witanddelight.com/feed/',
+    'My Cottagecore':    'https://mycottagecore.com/feed',
   },
-  'DARK ACADEMIA': {
-    'My Cottagecore': 'https://mycottagecore.com/feed',
+  'VINTAGE': {
+    'Vintage Dancer':    'https://vintagedancer.com/feed/',
+    'The Vintage News':  'https://www.thevintagenews.com/feed/',
+    'Racked Vintage':    'https://www.refinery29.com/rss.xml',
+  },
+  'PUNK GRUNGE': {
+    'NME':               'https://www.nme.com/feed',
+    'Alternative Press': 'https://www.altpress.com/feed/',
+    'Dazed':             'https://www.dazeddigital.com/rss',
+  },
+  'E-GIRL': {
+    'Teen Vogue':        'https://www.teenvogue.com/feed/rss',
+    'Nylon':             'https://nylon.com/feed',
+    'Highsnobiety':      'https://www.highsnobiety.com/feed/',
+  },
+  'JEWELRY': {
+    'The Jewellery Editor': 'https://thejewelleryeditor.com/feed/',
+    'Robb Report':       'https://robbreport.com/feed/',
+    'Who What Wear':     'https://www.whowhatwear.com/rss',
+  },
+  'BAGS': {
+    'PurseBlog':         'https://www.purseblog.com/feed/',
+    'Spotted Fashion':   'https://www.spottedfashion.com/feed/',
+    'Harper\'s Bazaar':  'https://www.harpersbazaar.com/rss/all.xml',
+  },
+  'WATCHES': {
+    'Hodinkee':          'https://www.hodinkee.com/articles.rss',
+    'Monochrome Watches':'https://monochrome-watches.com/feed/',
+    'A Blog To Watch':   'https://www.ablogtowatch.com/feed/',
+    'Robb Report':       'https://robbreport.com/feed/',
+  },
+  'SNEAKERS': {
+    'Sneaker News':      'https://sneakernews.com/feed/',
+    'Nice Kicks':        'https://www.nicekicks.com/feed/',
+    'SneakerFiles':      'https://www.sneakerfiles.com/feed/',
+    'Hypebeast':         'https://hypebeast.com/feed',
+  },
+  'ACCESSORIES': {
+    'Camille Styles':    'https://camillestyles.com/feed/',
+    'Classy Yet Trendy': 'https://www.classyyettrendy.com/feed/',
+    'Glamour':           'https://www.glamour.com/feed/rss',
   },
 };
 
 const BRANDS = [
+  // Luxury fashion
   'Balenciaga', 'Rick Owens', 'Maison Margiela', 'Prada', 'Miu Miu',
   'Loewe', 'Jacquemus', 'Bottega Veneta', 'Saint Laurent', 'YSL',
   'Dior', 'Chanel', 'Louis Vuitton', 'Alexander McQueen', 'Valentino',
@@ -50,6 +116,18 @@ const BRANDS = [
   'Celine', 'The Row', 'Jil Sander', 'Issey Miyake', 'Comme des Garcons',
   'Vivienne Westwood', 'Stella McCartney', 'Coperni', 'Marine Serre',
   'Amiri', 'Casablanca', 'Palm Angels', 'Stone Island', 'Moncler',
+  // Streetwear
+  'Supreme', 'Palace', 'Stussy', 'Carhartt', 'A Bathing Ape', 'BAPE',
+  'Noah NYC', 'Aimé Leon Dore', 'Kith', 'Anti Social Social Club',
+  // Sneakers
+  'Nike', 'Adidas', 'Jordan', 'New Balance', 'Converse', 'Vans',
+  'Asics', 'Salomon', 'On Running', 'Hoka', 'Puma', 'Reebok',
+  // Bags & Accessories
+  'Hermès', 'Coach', 'Kate Spade', 'Michael Kors', 'Tory Burch',
+  'Mansur Gavriel', 'Polène', 'Jacquemus', 'By Far',
+  // Watches & Jewelry
+  'Rolex', 'Omega', 'Patek Philippe', 'Audemars Piguet', 'Cartier',
+  'IWC', 'TAG Heuer', 'Breitling', 'Tiffany', 'Pandora', 'Van Cleef',
 ];
 
 const HEADERS = {
@@ -59,18 +137,15 @@ const HEADERS = {
 // ─── Helpers ───────────────────────────────────────────────────────────────────
 
 function getImage(item) {
-  // media:content or media:thumbnail
   const media = item['media:content'] || item['media:thumbnail'];
   if (media) {
     if (typeof media === 'string') return media;
     if (media.$ && media.$.url) return media.$.url;
     if (Array.isArray(media) && media[0]?.$?.url) return media[0].$.url;
   }
-  // enclosure
   if (item.enclosure?.url && item.enclosure.type?.startsWith('image')) {
     return item.enclosure.url;
   }
-  // parse image from content or summary HTML
   const html = item['content:encoded'] || item.content || item.summary || '';
   if (html) {
     const $ = cheerio.load(html);
@@ -88,17 +163,6 @@ function findBrands(text) {
 function stripHtml(html = '') {
   const $ = cheerio.load(html);
   return $.text().trim();
-}
-
-async function fetchBody(url) {
-  try {
-    const res = await fetch(url, { headers: HEADERS, signal: AbortSignal.timeout(10000) });
-    const html = await res.text();
-    const $ = cheerio.load(html);
-    return $('p').slice(0, 25).map((_, el) => $(el).text()).get().join(' ').slice(0, 3000);
-  } catch {
-    return '';
-  }
 }
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -132,7 +196,6 @@ async function scrape() {
           const link  = item.link ?? '';
           const desc  = stripHtml(item.content || item.contentSnippet || item.summary || '').slice(0, 280);
           const image = getImage(item);
-
           const brands = findBrands(title + ' ' + desc);
 
           articles.push({ category, source, title, desc, link, image, brands });
@@ -147,48 +210,13 @@ async function scrape() {
 
   // Within each category: brand articles first, then articles with images
   articles.sort((a, b) => {
-    if (a.category !== b.category) return 0; // keep category grouping intact
+    if (a.category !== b.category) return 0;
     const aScore = (a.brands.length ? 0 : 2) + (a.image ? 0 : 1);
     const bScore = (b.brands.length ? 0 : 2) + (b.image ? 0 : 1);
     return aScore - bScore;
   });
 
   return articles;
-}
-
-// ─── TikTok Prompt ─────────────────────────────────────────────────────────────
-
-function buildTikTokPrompt(articles, dateStr) {
-  const brandCounts = {};
-  const headlines = [];
-
-  const viralArticles = articles.filter(a => a.category === 'VIRAL');
-
-  for (const a of viralArticles.slice(0, 40)) {
-    for (const b of a.brands) brandCounts[b] = (brandCounts[b] ?? 0) + 1;
-    if (headlines.length < 4) headlines.push(a.title);
-  }
-
-  const topBrands = Object.entries(brandCounts)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 4)
-    .map(([b]) => b)
-    .join(', ') || 'major fashion houses';
-
-  const headlinesStr = headlines.map(h => `- ${h}`).join('\n');
-
-  return `You are a TikTok fashion creator writing a short video script.
-
-Today's date: ${dateStr}
-Today's top mentioned brands: ${topBrands}
-Today's biggest fashion headlines:
-${headlinesStr}
-
-Write a 30-second TikTok script (about 80 words):
-- Hook in the FIRST 3 SECONDS (surprising or provocative)
-- Mention 2-3 visual outfit/trend ideas viewers can recreate
-- End with a question or CTA to boost comments
-- Casual Gen-Z tone, fast-paced, no filler words`;
 }
 
 // ─── HTML ──────────────────────────────────────────────────────────────────────
@@ -207,12 +235,12 @@ header { padding: 24px 32px 20px; border-bottom: 1px solid #1c1c1c; display: fle
 .day-nav::-webkit-scrollbar { display: none; }
 .day-link { white-space: nowrap; padding: 5px 14px; border-radius: 20px; border: 1px solid #2a2a2a; color: var(--muted); text-decoration: none; font-size: .75rem; transition: all .18s; }
 .day-link:hover, .day-link.active { background: var(--accent); color: #000; border-color: var(--accent); font-weight: 700; }
-.tiktok-box { margin: 28px 32px 12px; background: var(--surface); border: 1px solid #222; border-left: 3px solid var(--accent); border-radius: var(--radius); padding: 20px 24px; }
-.tiktok-box h2 { font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
-.prompt-text { font-size: .82rem; color: #bbb; line-height: 1.65; white-space: pre-wrap; font-family: 'Courier New', monospace; background: var(--surface2); padding: 14px 16px; border-radius: 8px; margin-bottom: 14px; max-height: 200px; overflow-y: auto; }
-.copy-btn { background: var(--accent); color: #000; border: none; padding: 10px 22px; border-radius: 6px; font-weight: 800; font-size: .8rem; cursor: pointer; letter-spacing: .06em; transition: opacity .2s; }
-.copy-btn:hover { opacity: .82; }
-.stats { padding: 10px 32px 20px; color: var(--muted); font-size: .75rem; letter-spacing: .05em; }
+.filter-bar { padding: 14px 32px; display: flex; gap: 8px; overflow-x: auto; border-bottom: 1px solid #1c1c1c; scrollbar-width: none; flex-wrap: wrap; row-gap: 8px; }
+.filter-bar::-webkit-scrollbar { display: none; }
+.filter-btn { white-space: nowrap; padding: 6px 16px; border-radius: 20px; border: 1px solid #2a2a2a; background: transparent; color: var(--muted); font-size: .75rem; cursor: pointer; transition: all .18s; letter-spacing: .05em; font-family: inherit; }
+.filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+.filter-btn.active { background: var(--accent); color: #000; border-color: var(--accent); font-weight: 700; }
+.stats { padding: 16px 32px 8px; color: var(--muted); font-size: .75rem; letter-spacing: .05em; }
 .stats strong { color: var(--accent); }
 .section { padding: 0 32px 48px; }
 .section-header { display: flex; align-items: center; gap: 14px; padding: 28px 0 18px; }
@@ -255,16 +283,26 @@ function cardHtml(a) {
 }
 
 const CATEGORY_EMOJI = {
-  'VIRAL':         '🔥',
-  'ALTERNATIVE':   '⚡',
-  'GOTH':          '🖤',
-  'Y2K':           '💿',
-  'COTTAGECORE':   '🌿',
-  'DARK ACADEMIA': '📚',
+  'VIRAL':        '🔥',
+  'STREETWEAR':   '🏙️',
+  'GOTH':         '🖤',
+  'Y2K':          '💿',
+  'KAWAII':       '🌸',
+  'COQUETTE':     '🎀',
+  'OLD MONEY':    '🤍',
+  'TECHWEAR':     '🤖',
+  'COTTAGECORE':  '🌿',
+  'VINTAGE':      '👗',
+  'PUNK GRUNGE':  '🎸',
+  'E-GIRL':       '👾',
+  'JEWELRY':      '💍',
+  'BAGS':         '👜',
+  'WATCHES':      '⌚',
+  'SNEAKERS':     '👟',
+  'ACCESSORIES':  '🕶️',
 };
 
-function generateHtml(articles, dateStr, allDays, prompt, passwordHash) {
-  // Group articles by category, preserving RSS_FEEDS order
+function generateHtml(articles, dateStr, allDays, passwordHash) {
   const categoryOrder = Object.keys(RSS_FEEDS);
   const grouped = {};
   for (const cat of categoryOrder) grouped[cat] = [];
@@ -277,7 +315,7 @@ function generateHtml(articles, dateStr, allDays, prompt, passwordHash) {
     if (!catArticles.length) return '';
     const emoji = CATEGORY_EMOJI[cat] || '';
     const cards = catArticles.map(cardHtml).join('\n');
-    return `<section class="section">
+    return `<section class="section" data-category="${cat}">
   <div class="section-header">
     <span class="section-title">${emoji} ${cat}</span>
     <div class="section-line"></div>
@@ -295,7 +333,14 @@ ${cards}
     `<a class="day-link ${d === dateStr ? 'active' : ''}" href="${d}.html">${d}</a>`
   ).join('\n');
 
-  const promptSafe = prompt.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  // Filter buttons — ALL + one per category
+  const filterButtons = [
+    `<button class="filter-btn active" data-cat="ALL">ALL</button>`,
+    ...categoryOrder.map(cat => {
+      const emoji = CATEGORY_EMOJI[cat] || '';
+      return `<button class="filter-btn" data-cat="${cat}">${emoji} ${cat}</button>`;
+    }),
+  ].join('\n    ');
 
   const authScript = passwordHash ? `
 <style>
@@ -376,10 +421,8 @@ ${authScript}
 ${dayLinks}
 </nav>
 
-<div class="tiktok-box">
-  <h2>🎬 TikTok Script Prompt — paste into ChatGPT</h2>
-  <div class="prompt-text" id="prompt">${promptSafe}</div>
-  <button class="copy-btn" onclick="copyPrompt()">📋 Copy Prompt</button>
+<div class="filter-bar">
+    ${filterButtons}
 </div>
 
 <div class="stats">
@@ -392,14 +435,20 @@ ${sections}
 </main>
 
 <script>
-function copyPrompt() {
-  const text = document.getElementById('prompt').innerText;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('.copy-btn');
-    btn.textContent = '✓ Copied!';
-    setTimeout(() => btn.textContent = '📋 Copy Prompt', 2200);
+(function () {
+  const btns = document.querySelectorAll('.filter-btn');
+  const sections = document.querySelectorAll('section.section');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.cat;
+      sections.forEach(s => {
+        s.style.display = (cat === 'ALL' || s.dataset.category === cat) ? '' : 'none';
+      });
+    });
   });
-}
+})();
 </script>
 </body>
 </html>`;
@@ -432,8 +481,7 @@ async function main() {
     ? createHash('sha256').update(sitePassword).digest('hex')
     : '';
 
-  const prompt = buildTikTokPrompt(articles, today);
-  const html   = generateHtml(articles, today, allDays, prompt, passwordHash);
+  const html = generateHtml(articles, today, allDays, passwordHash);
 
   fs.writeFileSync(path.join(daysDir, `${today}.html`), html, 'utf8');
   console.log(`✓  days/${today}.html  (${articles.length} articles)`);
